@@ -14,6 +14,8 @@ import pdfplumber
 QUI = Path(__file__).parent
 URL = ("https://backend.fip.it/api/v1/calendario.pdf?comitato_codice=PMB&regione_codice=LO&sesso=M"
        "&codice_campionato=TAQS&codice_fase=2&codice_girone=86680&codice_andata_ritorno=1&giornata=1")
+URL_CLASSIFICA = ("https://fip.it/risultati/?group=campionati-regionali&regione_codice=LO&comitato_codice=PMB"
+                   "&sesso=M&codice_campionato=TAQS&codice_fase=2&codice_girone=86680")
 MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto",
         "settembre","ottobre","novembre","dicembre"]
 
@@ -152,6 +154,21 @@ def completa_risultati_mancanti(gare, oggi):
             continue
         g["pa"], g["pb"] = punti[g["a"]], punti[g["b"]]
 
+# ---------- classifica ufficiale (i punti li calcola FIP, non noi) ----------
+RE_CLASSIFICA_RIGA = re.compile(
+    r'<td>\s*\d+\s*</td>\s*<td>\s*<div class="team">.*?team__name">\s*([^<]+?)\s*</div>.*?</div>\s*</td>\s*<td>\s*(\d+)\s*</td>',
+    re.S)
+
+def classifica_da_fip():
+    """Legge la classifica (nome squadra -> punti) direttamente dalla pagina
+    risultati di FIP, così il punteggio è sempre quello ufficiale, qualunque
+    sia la regola (il minibasket può differire dal basket agonistico)."""
+    req = urllib.request.Request(URL_CLASSIFICA, headers={"User-Agent": "Mozilla/5.0 (aggiornamento calendario)"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read().decode("utf-8", "ignore")
+    righe = RE_CLASSIFICA_RIGA.findall(html)
+    return {nome_squadra(nome): int(punti) for nome, punti in righe}
+
 def main():
     pdf_path = None
     if "--pdf" in sys.argv:
@@ -174,7 +191,13 @@ def main():
     oggi = datetime.now(ZoneInfo("Europe/Rome")).strftime("%Y-%m-%d")
     completa_risultati_mancanti(nuove, oggi)
     nuove.sort(key=lambda g: (g["g"], (g["d"] or "") + (g["t"] or ""), g["n"]))
-    if nuove == cache["gare"] and (QUI / "index.html").exists():
+
+    try:
+        punti_fip = classifica_da_fip()
+    except Exception:
+        punti_fip = cache.get("punti", {})  # se FIP non risponde, teniamo l'ultima nota
+
+    if nuove == cache["gare"] and punti_fip == cache.get("punti", {}) and (QUI / "index.html").exists():
         print("Nessuna novità.")
         return
 
@@ -183,6 +206,7 @@ def main():
     html = (QUI / "template.html").read_text(encoding="utf-8")
     html = html.replace("/*DATI_GARE*/[]", json.dumps(nuove, ensure_ascii=False, indent=1).replace("</", "<\\/"))
     html = html.replace("/*DATI_GIORNATE*/{}", json.dumps({str(k): v for k, v in giornate.items()}))
+    html = html.replace("/*DATI_PUNTI*/{}", json.dumps(punti_fip, ensure_ascii=False))
     html = html.replace('/*DATI_AGGIORNATO*/""', json.dumps(aggiornato, ensure_ascii=False))
     (QUI / "build.html").write_text(html, encoding="utf-8")
 
@@ -192,7 +216,7 @@ def main():
     else:
         shutil.copy(QUI / "build.html", QUI / "index.html")
 
-    cache_file.write_text(json.dumps({"gare": nuove, "aggiornato": aggiornato}, ensure_ascii=False, indent=1), encoding="utf-8")
+    cache_file.write_text(json.dumps({"gare": nuove, "aggiornato": aggiornato, "punti": punti_fip}, ensure_ascii=False, indent=1), encoding="utf-8")
     giocate = sum(1 for g in nuove if g["pa"] is not None)
     print(f"Pagina aggiornata: {len(nuove)} gare, {giocate} giocate.")
 

@@ -366,11 +366,11 @@ html.js .view[hidden] { display:none; }
     <p class="sub">Qualificazione · 7 squadre, girone unico</p>
     <div class="tablewrap">
       <table class="cl" id="cl">
-        <thead><tr><th></th><th class="sq">Squadra</th><th>G</th><th>V</th><th>P</th><th class="c-pp">PF</th><th class="c-pp">PS</th><th>+/−</th></tr></thead>
+        <thead><tr><th></th><th class="sq">Squadra</th><th>G</th><th>V</th><th>P</th><th class="c-pp">PF</th><th class="c-pp">PS</th><th>+/−</th><th id="thPunti" hidden>Punti</th></tr></thead>
         <tbody id="clbody"></tbody>
       </table>
     </div>
-    <p class="legend"><b>G</b> partite giocate · <b>V</b> vinte · <b>P</b> perse · <b>PF</b> punti fatti · <b>PS</b> punti subiti (su schermi larghi) · <b>+/−</b> differenza tra punti fatti e subiti. Ordine per vittorie; a parità, differenza punti e poi l'ordine della FIP (la classifica a punteggio ufficiale è su fip.it).</p>
+    <p class="legend" id="clLegend"><b>G</b> partite giocate · <b>V</b> vinte · <b>P</b> perse · <b>PF</b> punti fatti · <b>PS</b> punti subiti (su schermi larghi) · <b>+/−</b> differenza tra punti fatti e subiti. Ordine per vittorie; a parità, differenza punti e poi l'ordine della FIP (la classifica a punteggio ufficiale è su fip.it).</p>
 
     <div class="gsel"><button type="button" id="gprev" aria-label="Giornata precedente">‹</button><select id="gsel" aria-label="Scegli la giornata"></select><button type="button" id="gnext" aria-label="Giornata successiva">›</button></div>
     <div id="gare"></div>
@@ -395,6 +395,7 @@ html.js .view[hidden] { display:none; }
 /* Dati scritti in automatico da aggiorna.py a partire dal calendario FIP: non modificare a mano. */
 const GARE = /*DATI_GARE*/[];
 const GIORNATA_DATA = /*DATI_GIORNATE*/{};
+const PUNTI_FIP = /*DATI_PUNTI*/{};
 const AGGIORNATO = /*DATI_AGGIORNATO*/"";
 /* Loghi (facoltativo): cartella "loghi" accanto a index.html, es. 'LISSONE ROSSO': 'loghi/lissone-rosso.png' */
 const LOGHI = {
@@ -636,8 +637,13 @@ GARE.filter(played).forEach(m=>{
   A.g++;B.g++;A.pf+=m.pa;A.ps+=m.pb;B.pf+=m.pb;B.ps+=m.pa;
   if(m.pa>m.pb){A.v++;B.p++}else if(m.pb>m.pa){B.v++;A.p++}
 });
-const rows=Object.values(T).map(t=>({...t,df:t.pf-t.ps}));
-rows.sort((x,y)=>y.v-x.v||y.df-x.df||ORDINE_FIP.indexOf(x.n)-ORDINE_FIP.indexOf(y.n));
+const haPunti=Object.keys(PUNTI_FIP).length>0;
+const rows=Object.values(T).map(t=>({...t,df:t.pf-t.ps,pt:PUNTI_FIP[t.n]}));
+rows.sort(haPunti
+  ?(x,y)=>(y.pt??-1)-(x.pt??-1)||y.df-x.df||ORDINE_FIP.indexOf(x.n)-ORDINE_FIP.indexOf(y.n)
+  :(x,y)=>y.v-x.v||y.df-x.df||ORDINE_FIP.indexOf(x.n)-ORDINE_FIP.indexOf(y.n));
+document.getElementById('thPunti').hidden=!haPunti;
+if(haPunti)document.getElementById('clLegend').innerHTML='<b>G</b> partite giocate · <b>V</b> vinte · <b>P</b> perse · <b>PF</b> punti fatti · <b>PS</b> punti subiti (su schermi larghi) · <b>+/−</b> differenza tra punti fatti e subiti · <b>Punti</b> in classifica (fonte: FIP). A parità di punti l\'ordine è quello della FIP.';
 const cb=document.getElementById('clbody'); cb.innerHTML='';
 rows.forEach((t,i)=>{
   const tr=document.createElement('tr');
@@ -645,7 +651,8 @@ rows.forEach((t,i)=>{
   const d=t.df>0?`<span class="diffp">+${t.df}</span>`:(t.df<0?`<span class="diffn">−${Math.abs(t.df)}</span>`:'0');
   tr.innerHTML=`<td class="pos">${i+1}</td>
     <td class="sq"><div class="sqin"><div class="crest ro">${crestInner(t.n)}</div><b>${t.n}</b></div></td>
-    <td>${t.g}</td><td>${t.v}</td><td>${t.p}</td><td class="c-pp">${t.pf}</td><td class="c-pp">${t.ps}</td><td>${d}</td>`;
+    <td>${t.g}</td><td>${t.v}</td><td>${t.p}</td><td class="c-pp">${t.pf}</td><td class="c-pp">${t.ps}</td><td>${d}</td>
+    ${haPunti?`<td class="pt"><span class="ptpill">${t.pt??'–'}</span></td>`:''}`;
   cb.appendChild(tr);
 });
 
