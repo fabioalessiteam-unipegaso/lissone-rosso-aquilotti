@@ -1,0 +1,32 @@
+CALENDARIO E CLASSIFICA AQUILOTTI SMALL - PALL. LISSONE ROSSO
+Pagina web che si aggiorna da sola con i risultati della FIP.
+
+COME FUNZIONA
+Ogni ora nel weekend (e due volte al giorno negli altri giorni) un programma gratuito di GitHub
+scarica il calendario ufficiale FIP, legge partite e risultati, ricalcola la classifica e
+ripubblica la pagina. Nessuno deve fare niente.
+
+MESSA ONLINE (una volta sola, circa 10 minuti, serve un account GitHub gratuito)
+1. Su github.com creare un nuovo repository PUBBLICO, ad esempio "lissone-rosso-aquilotti".
+2. Caricare tutti i file di questa cartella, compresa la cartella nascosta ".github"
+   (con "Add file" > "Upload files" oppure con git).
+3. Nel repository: Settings > Pages > "Deploy from a branch" > branch "main", cartella "/ (root)" > Save.
+4. Nel repository: Actions > "Aggiorna calendario e classifica" > "Run workflow", per il primo aggiornamento.
+5. Il link pubblico sarà del tipo https://NOME-UTENTE.github.io/lissone-rosso-aquilotti/ (visibile a tutti, senza login).
+
+SE QUALCOSA NON VA
+- Se la FIP cambia il formato del PDF o non risponde, il programma NON modifica la pagina:
+  resta online l'ultima versione corretta e GitHub manda un'email di errore.
+- Per forzare un aggiornamento: Actions > "Run workflow".
+- Per cambiare il girone (altra categoria o altro campionato) si modifica l'indirizzo URL in aggiorna.py.
+
+FILE
+index.html        la pagina pubblicata (si rigenera da sola)
+template.html     l'aspetto della pagina
+aggiorna.py       scarica e legge il PDF FIP
+prerender.js      prepara il contenuto per le anteprime
+dati.json         ultimo stato letto
+.github/workflows/aggiorna.yml   la pianificazione automatica
+
+PROVA IN LOCALE (facoltativa)
+  pip install pdfplumber ; npm install jsdom ; python aggiorna.py

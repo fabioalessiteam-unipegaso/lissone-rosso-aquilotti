@@ -1,0 +1,236 @@
+{
+ "gare": [
+  {
+   "g": 1,
+   "n": 18832,
+   "a": "BASKET CESANO SEVESO BIANCO",
+   "b": "POB Binzago SMALL",
+   "d": "2026-11-14",
+   "t": "16:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+  },
+  {
+   "g": 1,
+   "n": 18831,
+   "a": "GIRAVOLTA",
+   "b": "KENNEDY",
+   "d": "2026-11-14",
+   "t": "17:15",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+  },
+  {
+   "g": 1,
+   "n": 18833,
+   "a": "NUOVO BASKET GROANE 2005",
+   "b": "AURORA DESIO 94 BLU",
+   "d": "2027-01-16",
+   "t": "17:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · Via Superga 5, Lentate Sul Seveso"
+  },
+  {
+   "g": 2,
+   "n": 18834,
+   "a": "GIRAVOLTA",
+   "b": "NUOVO BASKET GROANE 2005",
+   "d": "2026-11-21",
+   "t": "09:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+  },
+  {
+   "g": 2,
+   "n": 18836,
+   "a": "POB Binzago SMALL",
+   "b": "KENNEDY",
+   "d": "2026-11-22",
+   "t": "09:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+  },
+  {
+   "g": 2,
+   "n": 18835,
+   "a": "AURORA DESIO 94 BLU",
+   "b": "LISSONE ROSSO",
+   "d": "2026-11-22",
+   "t": "11:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+  },
+  {
+   "g": 3,
+   "n": 18837,
+   "a": "GIRAVOLTA",
+   "b": "POB Binzago SMALL",
+   "d": "2026-11-28",
+   "t": "11:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+  },
+  {
+   "g": 3,
+   "n": 18838,
+   "a": "BASKET CESANO SEVESO BIANCO",
+   "b": "AURORA DESIO 94 BLU",
+   "d": "2026-11-28",
+   "t": "17:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+  },
+  {
+   "g": 3,
+   "n": 18839,
+   "a": "LISSONE ROSSO",
+   "b": "NUOVO BASKET GROANE 2005",
+   "d": "2026-11-29",
+   "t": "10:00",
+   "pa": null,
+   "pb": null,
+   "v": "CASA"
+  },
+  {
+   "g": 4,
+   "n": 18840,
+   "a": "AURORA DESIO 94 BLU",
+   "b": "KENNEDY",
+   "d": "2026-11-21",
+   "t": "11:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+  },
+  {
+   "g": 4,
+   "n": 18842,
+   "a": "NUOVO BASKET GROANE 2005",
+   "b": "BASKET CESANO SEVESO BIANCO",
+   "d": "2026-12-13",
+   "t": "09:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · Via Superga 5, Lentate Sul Seveso"
+  },
+  {
+   "g": 4,
+   "n": 18841,
+   "a": "POB Binzago SMALL",
+   "b": "LISSONE ROSSO",
+   "d": "2026-12-13",
+   "t": "11:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+  },
+  {
+   "g": 5,
+   "n": 18844,
+   "a": "KENNEDY",
+   "b": "NUOVO BASKET GROANE 2005",
+   "d": "2026-12-19",
+   "t": "09:30",
+   "pa": null,
+   "pb": null,
+   "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate"
+  },
+  {
+   "g": 5,
+   "n": 18845,
+   "a": "BASKET CESANO SEVESO BIANCO",
+   "b": "LISSONE ROSSO",
+   "d": "2026-12-19",
+   "t": "10:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+  },
+  {
+   "g": 5,
+   "n": 18843,
+   "a": "GIRAVOLTA",
+   "b": "AURORA DESIO 94 BLU",
+   "d": "2026-12-20",
+   "t": "14:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+  },
+  {
+   "g": 6,
+   "n": 18847,
+   "a": "BASKET CESANO SEVESO BIANCO",
+   "b": "KENNEDY",
+   "d": "2027-01-09",
+   "t": "14:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+  },
+  {
+   "g": 6,
+   "n": 18846,
+   "a": "LISSONE ROSSO",
+   "b": "GIRAVOLTA",
+   "d": "2027-01-10",
+   "t": "10:00",
+   "pa": null,
+   "pb": null,
+   "v": "CASA"
+  },
+  {
+   "g": 6,
+   "n": 18848,
+   "a": "AURORA DESIO 94 BLU",
+   "b": "POB Binzago SMALL",
+   "d": "2027-01-10",
+   "t": "11:00",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+  },
+  {
+   "g": 7,
+   "n": 18850,
+   "a": "KENNEDY",
+   "b": "LISSONE ROSSO",
+   "d": "2027-01-16",
+   "t": "10:30",
+   "pa": null,
+   "pb": null,
+   "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate"
+  },
+  {
+   "g": 7,
+   "n": 18851,
+   "a": "GIRAVOLTA",
+   "b": "BASKET CESANO SEVESO BIANCO",
+   "d": "2027-01-16",
+   "t": "11:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+  },
+  {
+   "g": 7,
+   "n": 18849,
+   "a": "POB Binzago SMALL",
+   "b": "NUOVO BASKET GROANE 2005",
+   "d": "2027-01-17",
+   "t": "11:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+  }
+ ],
+ "aggiornato": "11 novembre 2026, 21:26"
+}

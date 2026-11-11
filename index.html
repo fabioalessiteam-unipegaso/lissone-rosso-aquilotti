@@ -1,0 +1,1109 @@
+<!DOCTYPE html><html lang="it" data-theme="dark"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calendario Aquilotti – Pall. Lissone Rosso 2026/27</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-512.png">
+<meta name="theme-color" content="#0a1628">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lissone Rosso">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Barlow:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   LISSONE ROSSO · PREMIUM DARK REDESIGN
+   ═══════════════════════════════════════════════ */
+:root {
+  --bg:        #050d1e;
+  --surface:   #0d1f3c;
+  --surface2:  #102240;
+  --glass:     rgba(13,31,60,0.7);
+  --ink:       #eef4ff;
+  --muted:     #7a90b8;
+  --subtle:    #2a3f63;
+  --blue:      #e8392f;
+  --blue-glow: rgba(232,57,47,0.35);
+  --blue-light:#ff6b5e;
+  --blue-dark: #8f1f1a;
+  --orange:    #1a3a8f;
+  --orange-glow:rgba(26,58,143,0.35);
+  --orange-light:#5b8fff;
+  --win:       #00e676;
+  --win-bg:    rgba(0,230,118,0.12);
+  --loss:      #ff5252;
+  --loss-bg:   rgba(255,82,82,0.12);
+  --line:      rgba(45,106,255,0.15);
+  --line2:     rgba(255,255,255,0.06);
+  --input-bg:  rgba(5,13,30,0.8);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --shadow-blue: 0 0 30px rgba(45,106,255,0.2);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Barlow', 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(45,106,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -200px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,122,32,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  position: relative;
+  z-index: 1;
+}
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #0f2a6b 0%, #1a3a9f 45%, #0d2260 100%);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-blue), inset 0 1px 0 rgba(255,255,255,0.1);
+  border: 1px solid rgba(45,106,255,0.3);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 85% 50%, rgba(255,122,32,0.08) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140' viewBox='0 0 200 140'%3E%3Cg stroke='rgba(255,255,255,0.06)' fill='none' stroke-width='1.5'%3E%3Ccircle cx='170' cy='70' r='45'/%3E%3Ccircle cx='170' cy='70' r='20'/%3E%3Cline x1='170' y1='25' x2='170' y2='115'/%3E%3Crect x='130' y='30' width='70' height='80' rx='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: auto, 200px 140px;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 22px 22px;
+  position: relative;
+  z-index: 1;
+}
+.hero-logo {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 3px rgba(45,106,255,0.5), 0 4px 20px rgba(0,0,0,0.4);
+  padding: 7px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-logo:hover { transform: scale(1.05); box-shadow: 0 0 0 4px rgba(45,106,255,0.7), 0 6px 28px rgba(0,0,0,0.5); }
+.hero-logo img { width: 100%; height: 100%; object-fit: contain; }
+.hero-text { flex: 1; min-width: 0; }
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.hero h1 span { color: #ffaa60; }
+.hero p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.hero-badge {
+  background: rgba(255,122,32,0.2);
+  border: 1px solid rgba(255,122,32,0.4);
+  color: #ffaa60;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 10px;
+}
+@media (max-width: 380px) { .hero h1 { font-size: 34px; } .hero-logo { width: 58px; height: 58px; } }
+/* UPD */
+.upd { margin: 10px 4px 0; font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.upd::before {
+  content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--win); box-shadow: 0 0 6px var(--win); animation: pulse-dot 2s infinite; flex: none;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+/* STATS */
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin: 14px 0 20px; }
+.stat {
+  background: var(--surface); border: 1px solid var(--line2); border-radius: var(--radius-md);
+  padding: 14px 6px 12px; text-align: center; position: relative; overflow: hidden;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.stat::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:40px; height:2px; background:var(--blue); border-radius:0 0 4px 4px; }
+.stat:hover { transform: translateY(-2px); border-color: var(--line); }
+.stat b { display:block; font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:800; line-height:1; color:var(--blue-light); }
+.stat span { font-size:11px; color:var(--muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin-top:4px; display:block; }
+/* TABS */
+.tabs { display:flex; gap:4px; background:var(--surface); border:1px solid var(--line2); border-radius:var(--radius-md); padding:4px; margin:0 0 20px; }
+.tabs a { flex:1; text-align:center; text-decoration:none; color:var(--muted); font:600 14px 'Barlow',sans-serif; padding:10px 6px; border-radius:10px; transition:all .25s ease; letter-spacing:.01em; }
+.tabs a[aria-current="true"] { background:linear-gradient(135deg,var(--blue-dark),var(--blue)); color:#fff; box-shadow:0 2px 12px var(--blue-glow); }
+.tabs a:hover:not([aria-current="true"]) { color:var(--ink); background:var(--line2); }
+.tabs a:focus-visible { outline:2px solid var(--orange); outline-offset:1px; }
+/* VIEW */
+.view { margin-top: 0; }
+.view > h2 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:28px; line-height:1; margin:0 0 4px; }
+.sub { margin:0 0 16px; color:var(--muted); font-size:14px; }
+/* EDIT BAR */
+.editbar { margin:0 0 18px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.editbar:empty { display:none; }
+.btn { font:600 14px 'Barlow',sans-serif; border:none; border-radius:var(--radius-sm); padding:10px 18px; cursor:pointer; background:linear-gradient(135deg,var(--blue-dark),var(--blue)); color:#fff; transition:all .2s ease; box-shadow:0 2px 12px var(--blue-glow); letter-spacing:.02em; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 18px var(--blue-glow); }
+.btn:active { transform: translateY(0); }
+.btn.alt { background:var(--surface); color:var(--ink); border:1px solid var(--line2); box-shadow:none; }
+.btn.alt:hover { border-color:var(--subtle); background:var(--surface2); }
+.btn:disabled { opacity:.4; cursor:default; transform:none !important; }
+.btn:focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+.msg { font-size:13.5px; color:var(--muted); }
+/* MATCH CARDS */
+.list { display:grid; gap:10px; }
+.match { background:var(--surface); border:1px solid var(--line2); border-radius:var(--radius-md); display:grid; grid-template-columns:76px 1fr; overflow:hidden; break-inside:avoid; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+.match:hover { transform: translateX(2px); border-color: rgba(45,106,255,0.25); box-shadow: var(--shadow-card); }
+.match.home .date { background:linear-gradient(180deg,#112070 0%,#0d1855 100%); }
+.date { background:linear-gradient(180deg,#6b3500 0%,#4a2500 100%); color:#fff; padding:12px 6px; text-align:center; display:flex; flex-direction:column; justify-content:center; gap:1px; }
+.date .dow { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.8; }
+.date .day { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:38px; line-height:1; }
+.date .mon { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.8; }
+.date .time { font-size:12px; font-weight:700; margin-top:6px; background:rgba(255,255,255,.15); border-radius:6px; padding:2px 4px; }
+.body { padding:12px 14px; }
+.row { display:grid; grid-template-columns:40px 1fr 60px; align-items:center; gap:10px; padding:5px 0; }
+.row + .row { border-top:1px solid var(--line2); }
+.team { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:19px; letter-spacing:.01em; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.team.us { color: var(--blue-light); }
+.crest { width:40px; height:44px; padding:0; border:0; background:none; cursor:pointer; display:block; transition:transform .2s ease; }
+.crest:hover { transform: scale(1.1); }
+.crest svg, .crest img { width:100%; height:100%; display:block; object-fit:contain; }
+.crest.ro { cursor:default; }
+.crest.ro:hover { transform:none; }
+.score { width:60px; height:44px; text-align:center; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:26px; color:var(--ink); background:var(--input-bg); border:1.5px solid var(--subtle); border-radius:10px; padding:0; -moz-appearance:textfield; transition:border-color .2s ease,box-shadow .2s ease; }
+.score::-webkit-outer-spin-button, .score::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+.score:focus { outline:none; border-color:var(--orange); box-shadow:0 0 0 3px var(--orange-glow); }
+.score.ro { display:flex; align-items:center; justify-content:center; }
+.score.win { border-color:var(--blue); color:var(--blue-light); box-shadow:0 0 0 2px var(--blue-glow); }
+.foot { display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; margin-top:10px; font-size:12.5px; color:var(--muted); }
+.foot a.maploc { color:inherit; text-decoration:underline; text-decoration-style:dotted; text-underline-offset:2px; }
+.tag { font-weight:700; font-size:11px; border-radius:999px; padding:2px 10px; letter-spacing:.06em; text-transform:uppercase; background:linear-gradient(135deg,var(--blue-dark),var(--blue)); color:#fff; }
+.match:not(.home) .tag { background:linear-gradient(135deg,#0a1a4a,var(--orange)); }
+.res { margin-left:auto; font-weight:700; font-size:11px; border-radius:999px; padding:3px 10px; letter-spacing:.06em; text-transform:uppercase; display:none; }
+.res.w { display:inline-block; background:var(--win-bg); color:var(--win); border:1px solid rgba(0,230,118,.3); }
+.res.l { display:inline-block; background:var(--loss-bg); color:var(--loss); border:1px solid rgba(255,82,82,.3); }
+.res.d { display:inline-block; background:var(--line2); color:var(--muted); }
+.match.next { border-color: rgba(255,122,32,0.5); box-shadow: 0 0 0 1px rgba(255,122,32,0.2), inset 0 0 20px rgba(255,122,32,0.04); }
+.nextflag { font-weight:700; color:var(--orange); font-size:11.5px; display:flex; align-items:center; gap:4px; letter-spacing:.04em; text-transform:uppercase; }
+.nextflag::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--orange); box-shadow:0 0 6px var(--orange); animation:pulse-dot 1.5s infinite; }
+.note { margin:18px 2px 0; font-size:13px; color:var(--muted); }
+.dateg .date { background: var(--surface2); border-top: 1px solid var(--line2); }
+.icsone { margin-left:auto; background:none; border:1px solid var(--subtle); border-radius:8px; padding:2px 10px; font-size:13px; line-height:1.4; cursor:pointer; color:var(--muted); transition:all .2s ease; }
+.icsone:hover { border-color: var(--blue); color: var(--blue-light); }
+/* CLASSIFICA */
+.tablewrap { background:var(--surface); border:1px solid var(--line2); border-radius:var(--radius-md); overflow-x:auto; }
+table.cl { width:100%; border-collapse:collapse; font-size:14.5px; }
+.cl th, .cl td { padding:10px 6px; text-align:center; border-bottom:1px solid var(--line2); }
+.cl tr:last-child td { border-bottom:0; }
+.cl thead th { font-weight:600; font-size:12px; color:var(--muted); padding-top:12px; letter-spacing:.05em; text-transform:uppercase; }
+.cl td.pos { width:30px; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:20px; color:var(--muted); }
+.cl td.sq { text-align:left; padding-left:4px; }
+.cl th.sq { text-align:left; padding-left:8px; }
+.sqin { display:flex; align-items:center; gap:10px; }
+.sqin .crest { width:26px; height:28px; flex:none; }
+.sqin b { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px; letter-spacing:.01em; line-height:1.1; }
+.cl td.pt { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22px; }
+.cl .ptpill { display:inline-block; min-width:36px; border-radius:8px; padding:0 6px; background:rgba(45,106,255,.12); border:1px solid rgba(45,106,255,.25); color:var(--blue-light); }
+.cl tr.us { background: rgba(45,106,255,0.08); }
+.cl tr.us b { color: var(--blue-light); }
+.diffp { color:var(--win); font-weight:600; }
+.diffn { color:var(--loss); font-weight:600; }
+.legend { margin:12px 2px 0; font-size:13px; color:var(--muted); line-height:1.7; }
+.legend b { color: var(--ink); }
+h3.gio { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:20px; margin:24px 0 10px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; }
+.gsel { display:flex; gap:8px; margin:0 0 4px; align-items:stretch; }
+.gsel select { flex:1; min-width:0; font:600 15px 'Barlow',sans-serif; color:var(--ink); background:var(--surface); border:1px solid var(--subtle); border-radius:var(--radius-sm); padding:10px 14px; appearance:none; }
+.gsel button { width:46px; font:700 22px 'Barlow',sans-serif; color:var(--muted); background:var(--surface); border:1px solid var(--subtle); border-radius:var(--radius-sm); cursor:pointer; transition:all .2s ease; }
+.gsel button:hover { color: var(--ink); }
+.gsel button:disabled { opacity:.3; cursor:default; }
+.gsel select:focus-visible, .gsel button:focus-visible { outline:2px solid var(--orange); outline-offset:1px; }
+html.js .gblock[hidden] { display:none; }
+.gblock + .gblock { margin-top:8px; }
+/* ALLENAMENTI */
+.train { background:var(--surface); border:1px solid var(--line2); border-radius:var(--radius-md); padding:18px; margin:0 0 16px; position:relative; overflow:hidden; }
+.train::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),transparent); }
+.train h3 { margin:0 0 12px; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:18px; letter-spacing:.04em; text-transform:uppercase; color:var(--blue-light); }
+.train ul { list-style:none; display:grid; gap:8px; }
+.train li { display:flex; gap:12px; font-size:14.5px; padding:8px 0; border-bottom:1px solid var(--line2); }
+.train li:last-child { border-bottom:none; padding-bottom:0; }
+.train li b { flex:none; width:40px; color:var(--orange); font-weight:700; font-size:14px; }
+.train li a.maploc { color:var(--blue-light); text-decoration:underline; text-decoration-style:dotted; text-underline-offset:2px; }
+.train li a.maploc:hover { color:var(--ink); }
+.footnote, .src { margin:14px 2px 0; font-size:12.5px; color:var(--muted); line-height:1.6; }
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.hero { animation: fadeUp .5s ease 0s both; }
+.stats { animation: fadeUp .5s ease .08s both; }
+.tabs { animation: fadeUp .5s ease .14s both; }
+html.js .view[hidden] { display:none; }
+/* PRINT */
+@media print {
+  :root, :root[data-theme="dark"] { --bg:#fff; --surface:#fff; --surface2:#f3f3f3; --ink:#111; --muted:#555; --line2:#ccc; --subtle:#999; }
+  body { background:#fff; color:#111; }
+  body::before, body::after { display:none; }
+  .tabs, .editbar, .icsone, .nextflag { display:none !important; }
+  html.js .view[hidden] { display:block; }
+  html.js .gblock[hidden] { display:block; }
+  .gsel { display:none; }
+  .hero, .match, .stat, .train, .tablewrap { box-shadow:none; animation:none; }
+  .hero { background:#eef2fb !important; border:1px solid #ccc; }
+  .hero h1, .hero p { color:#111 !important; text-shadow:none; }
+  .hero-badge { background:#eee; border-color:#ccc; color:#111; }
+  .score { background:#fff; border-color:#999; color:#111; }
+  .match.home .date, .date { background:#e8eefc !important; color:#111 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .match:not(.home) .date { background:#fdeee1 !important; }
+  .tag { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+@media (max-width:480px) { .cl .c-pp{display:none} .cl th,.cl td{padding:9px 4px} .sqin b{font-size:15px} .cl td.pos{width:24px;font-size:17px} }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important} }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-logo"><img src="loghi/lissone-rosso.png" alt="Stemma Lissone Rosso"></div>
+      <div class="hero-text">
+        <h1>Pall. <span>Lissone</span> Rosso</h1>
+        <p>Aquilotti Small · Girone Bianco · Stagione 2026/27</p>
+      </div>
+    </div>
+  </header>
+  <p class="upd" id="upd"></p>
+
+  <nav class="tabs" aria-label="Sezioni">
+    <a href="#calendario" id="t-cal" aria-current="true">Calendario Rosso</a>
+    <a href="#girone" id="t-gir">Girone</a>
+    <a href="#allenamenti" id="t-tra">Allenamenti</a>
+  </nav>
+
+  <section class="view" id="calendario">
+    <section class="stats" aria-label="Riepilogo">
+      <div class="stat"><b id="sV">0</b><span>Vinte</span></div>
+      <div class="stat"><b id="sP">0</b><span>Perse</span></div>
+      <div class="stat"><b id="sF">0</b><span>Fatti</span></div>
+      <div class="stat"><b id="sS">0</b><span>Subiti</span></div>
+    </section>
+    <div class="editbar">
+      <button type="button" class="btn alt" id="icsBtn">📅 Aggiungi al calendario (.ics)</button>
+      <button type="button" class="btn alt" id="pdfBtn">🖨️ Scarica PDF</button>
+      <button type="button" class="btn alt" id="installBtn">📲 Installa l'app</button>
+    </div>
+    <section class="list" id="list" aria-label="Partite"><article class="match next"><div class="date"><span class="dow">dom</span><span class="day">22</span><span class="mon">nov</span><span class="time">11:00</span></div>
+    <div class="body">
+      
+    <div class="row">
+      <div class="crest ro"><img src="loghi/aurora-desio-94.png" alt="Stemma AURORA DESIO 94 BLU"></div>
+      <div class="team">AURORA DESIO 94 BLU</div>
+      <div class="score ro" aria-label="Punti AURORA DESIO 94 BLU"></div>
+    </div>
+    <div class="row">
+      <div class="crest ro"><img src="loghi/lissone-rosso.png" alt="Stemma LISSONE ROSSO"></div>
+      <div class="team us">LISSONE ROSSO</div>
+      <div class="score ro" aria-label="Punti LISSONE ROSSO"></div>
+    </div>
+      <div class="foot">
+        <span class="tag">Trasferta</span>
+        <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Palestra%20Scuola%20Rodari%20%C2%B7%20Via%20Nenni%2C%20Desio" target="_blank" rel="noopener">Palestra Scuola Rodari · Via Nenni, Desio</a>
+        <span class="nextflag">Prossima</span>
+        
+        <button type="button" class="icsone" data-gara="18835" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>
+        <button type="button" class="icsone share" data-gara="18835" title="Condividi" aria-label="Condividi">📤</button>
+      </div>
+      <div class="foot" style="margin-top:2px"><span class="meteo" id="meteo"></span></div>
+      <div class="foot" style="margin-top:2px"><span>Gara 18835</span></div>
+    </div></article><article class="match home"><div class="date"><span class="dow">dom</span><span class="day">29</span><span class="mon">nov</span><span class="time">10:00</span></div>
+    <div class="body">
+      
+    <div class="row">
+      <div class="crest ro"><img src="loghi/lissone-rosso.png" alt="Stemma LISSONE ROSSO"></div>
+      <div class="team us">LISSONE ROSSO</div>
+      <div class="score ro" aria-label="Punti LISSONE ROSSO"></div>
+    </div>
+    <div class="row">
+      <div class="crest ro"><img src="loghi/basket-groane.png" alt="Stemma NUOVO BASKET GROANE 2005"></div>
+      <div class="team">NUOVO BASKET GROANE 2005</div>
+      <div class="score ro" aria-label="Punti NUOVO BASKET GROANE 2005"></div>
+    </div>
+      <div class="foot">
+        <span class="tag">Casa</span>
+        <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Palestra%20Parri%20%C2%B7%20Via%20Montegrappa%2C%20Muggi%C3%B2" target="_blank" rel="noopener">Palestra Parri · Via Montegrappa, Muggiò</a>
+        
+        
+        <button type="button" class="icsone" data-gara="18839" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>
+        <button type="button" class="icsone share" data-gara="18839" title="Condividi" aria-label="Condividi">📤</button>
+      </div>
+      
+      <div class="foot" style="margin-top:2px"><span>Gara 18839</span></div>
+    </div></article><article class="match"><div class="date"><span class="dow">dom</span><span class="day">13</span><span class="mon">dic</span><span class="time">11:30</span></div>
+    <div class="body">
+      
+    <div class="row">
+      <div class="crest ro"><svg viewBox="0 0 44 48" aria-hidden="true"><path d="M22 2 L40 8 V24 C40 35 32 42 22 46 C12 42 4 35 4 24 V8 Z" fill="#8e1f2f" stroke="#8e1f2f" stroke-width="2.5"></path><path d="M22 6 L36 10.5 V24 C36 32.5 30 38.5 22 42 C14 38.5 8 32.5 8 24 V10.5 Z" fill="none" stroke="#ffffff" stroke-width="1" opacity=".7"></path><text x="22" y="29" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="18" fill="#ffffff">PB</text></svg></div>
+      <div class="team">POB Binzago SMALL</div>
+      <div class="score ro" aria-label="Punti POB Binzago SMALL"></div>
+    </div>
+    <div class="row">
+      <div class="crest ro"><img src="loghi/lissone-rosso.png" alt="Stemma LISSONE ROSSO"></div>
+      <div class="team us">LISSONE ROSSO</div>
+      <div class="score ro" aria-label="Punti LISSONE ROSSO"></div>
+    </div>
+      <div class="foot">
+        <span class="tag">Trasferta</span>
+        <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Palazzetto%20Don%20Ghezzi%20%C2%B7%20Via%20Manzoni%2023%2C%20Cesano%20Maderno" target="_blank" rel="noopener">Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno</a>
+        
+        
+        <button type="button" class="icsone" data-gara="18841" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>
+        <button type="button" class="icsone share" data-gara="18841" title="Condividi" aria-label="Condividi">📤</button>
+      </div>
+      
+      <div class="foot" style="margin-top:2px"><span>Gara 18841</span></div>
+    </div></article><article class="match"><div class="date"><span class="dow">sab</span><span class="day">19</span><span class="mon">dic</span><span class="time">10:30</span></div>
+    <div class="body">
+      
+    <div class="row">
+      <div class="crest ro"><img src="loghi/cesano-seveso.png" alt="Stemma BASKET CESANO SEVESO BIANCO"></div>
+      <div class="team">BASKET CESANO SEVESO BIANCO</div>
+      <div class="score ro" aria-label="Punti BASKET CESANO SEVESO BIANCO"></div>
+    </div>
+    <div class="row">
+      <div class="crest ro"><img src="loghi/lissone-rosso.png" alt="Stemma LISSONE ROSSO"></div>
+      <div class="team us">LISSONE ROSSO</div>
+      <div class="score ro" aria-label="Punti LISSONE ROSSO"></div>
+    </div>
+      <div class="foot">
+        <span class="tag">Trasferta</span>
+        <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Palestra%20Altopiano%20%C2%B7%20Via%20Groane%2C%2010%2C%20Seveso" target="_blank" rel="noopener">Palestra Altopiano · Via Groane, 10, Seveso</a>
+        
+        
+        <button type="button" class="icsone" data-gara="18845" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>
+        <button type="button" class="icsone share" data-gara="18845" title="Condividi" aria-label="Condividi">📤</button>
+      </div>
+      
+      <div class="foot" style="margin-top:2px"><span>Gara 18845</span></div>
+    </div></article><article class="match home"><div class="date"><span class="dow">dom</span><span class="day">10</span><span class="mon">gen</span><span class="time">10:00</span></div>
+    <div class="body">
+      
+    <div class="row">
+      <div class="crest ro"><img src="loghi/lissone-rosso.png" alt="Stemma LISSONE ROSSO"></div>
+      <div class="team us">LISSONE ROSSO</div>
+      <div class="score ro" aria-label="Punti LISSONE ROSSO"></div>
+    </div>
+    <div class="row">
+      <div class="crest ro"><img src="loghi/giravolta.png" alt="Stemma GIRAVOLTA"></div>
+      <div class="team">GIRAVOLTA</div>
+      <div class="score ro" aria-label="Punti GIRAVOLTA"></div>
+    </div>
+      <div class="foot">
+        <span class="tag">Casa</span>
+        <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Palestra%20Parri%20%C2%B7%20Via%20Montegrappa%2C%20Muggi%C3%B2" target="_blank" rel="noopener">Palestra Parri · Via Montegrappa, Muggiò</a>
+        
+        
+        <button type="button" class="icsone" data-gara="18846" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>
+        <button type="button" class="icsone share" data-gara="18846" title="Condividi" aria-label="Condividi">📤</button>
+      </div>
+      
+      <div class="foot" style="margin-top:2px"><span>Gara 18846</span></div>
+    </div></article><article class="match"><div class="date"><span class="dow">sab</span><span class="day">16</span><span class="mon">gen</span><span class="time">10:30</span></div>
+    <div class="body">
+      
+    <div class="row">
+      <div class="crest ro"><img src="loghi/kennedy.png" alt="Stemma KENNEDY"></div>
+      <div class="team">KENNEDY</div>
+      <div class="score ro" aria-label="Punti KENNEDY"></div>
+    </div>
+    <div class="row">
+      <div class="crest ro"><img src="loghi/lissone-rosso.png" alt="Stemma LISSONE ROSSO"></div>
+      <div class="team us">LISSONE ROSSO</div>
+      <div class="score ro" aria-label="Punti LISSONE ROSSO"></div>
+    </div>
+      <div class="foot">
+        <span class="tag">Trasferta</span>
+        <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=PALESTRA%20SCOLASTICA%20%C2%B7%20Via%20Gianni%20Rodari%20snc%2C%20Limbiate" target="_blank" rel="noopener">PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate</a>
+        
+        
+        <button type="button" class="icsone" data-gara="18850" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>
+        <button type="button" class="icsone share" data-gara="18850" title="Condividi" aria-label="Condividi">📤</button>
+      </div>
+      
+      <div class="foot" style="margin-top:2px"><span>Gara 18850</span></div>
+    </div></article></section>
+  </section>
+
+  <section class="view" id="girone">
+    <h2>Classifica</h2>
+    <p class="sub">Qualificazione · 7 squadre, girone unico</p>
+    <div class="tablewrap">
+      <table class="cl" id="cl">
+        <thead><tr><th></th><th class="sq">Squadra</th><th>G</th><th>V</th><th>P</th><th class="c-pp">PF</th><th class="c-pp">PS</th><th>+/−</th><th>Punti</th></tr></thead>
+        <tbody id="clbody"></tbody>
+      </table>
+    </div>
+    <p class="legend"><b>G</b> partite giocate · <b>V</b> vinte · <b>P</b> perse · <b>PF</b> punti fatti · <b>PS</b> punti subiti (su schermi larghi) · <b>+/−</b> differenza tra punti fatti e subiti. Una vittoria vale <b>2 punti</b>, una sconfitta 0. A parità di punti l’ordine è quello della FIP.</p>
+
+    <div class="gsel"><button type="button" id="gprev" aria-label="Giornata precedente">‹</button><select id="gsel" aria-label="Scegli la giornata"></select><button type="button" id="gnext" aria-label="Giornata successiva">›</button></div>
+    <div id="gare"></div>
+    <p class="src" id="src"></p>
+  </section>
+
+  <section class="view" id="allenamenti">
+    <h2>Allenamenti</h2>
+    <p class="sub">Orari confermati · Stagione 2026/27</p>
+    <section class="train" aria-label="Allenamenti">
+      <ul>
+        <li><b>Lun</b> 18:00–19:15 · <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Scuola%20elementare%20De%20Gasperi%2C%20Muggi%C3%B2" target="_blank" rel="noopener">Palestra De Gasperi, Muggiò</a></li>
+        <li><b>Mer</b> 18:00–19:15 · <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Scuola%20elementare%20De%20Gasperi%2C%20Muggi%C3%B2" target="_blank" rel="noopener">Palestra De Gasperi, Muggiò</a></li>
+        <li><b>Ven</b> 17:00–18:00 · <a class="maploc" href="https://www.google.com/maps/search/?api=1&amp;query=Palestra%20Parri%2C%20Via%20Montegrappa%2C%20Muggi%C3%B2" target="_blank" rel="noopener">Palestra Parri, Muggiò</a></li>
+      </ul>
+    </section>
+  </section>
+
+</main>
+
+<script>
+/* Dati scritti in automatico da aggiorna.py a partire dal calendario FIP: non modificare a mano. */
+const GARE = [
+ {
+  "g": 1,
+  "n": 18832,
+  "a": "BASKET CESANO SEVESO BIANCO",
+  "b": "POB Binzago SMALL",
+  "d": "2026-11-14",
+  "t": "16:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+ },
+ {
+  "g": 1,
+  "n": 18831,
+  "a": "GIRAVOLTA",
+  "b": "KENNEDY",
+  "d": "2026-11-14",
+  "t": "17:15",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+ },
+ {
+  "g": 1,
+  "n": 18833,
+  "a": "NUOVO BASKET GROANE 2005",
+  "b": "AURORA DESIO 94 BLU",
+  "d": "2027-01-16",
+  "t": "17:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · Via Superga 5, Lentate Sul Seveso"
+ },
+ {
+  "g": 2,
+  "n": 18834,
+  "a": "GIRAVOLTA",
+  "b": "NUOVO BASKET GROANE 2005",
+  "d": "2026-11-21",
+  "t": "09:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+ },
+ {
+  "g": 2,
+  "n": 18836,
+  "a": "POB Binzago SMALL",
+  "b": "KENNEDY",
+  "d": "2026-11-22",
+  "t": "09:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+ },
+ {
+  "g": 2,
+  "n": 18835,
+  "a": "AURORA DESIO 94 BLU",
+  "b": "LISSONE ROSSO",
+  "d": "2026-11-22",
+  "t": "11:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+ },
+ {
+  "g": 3,
+  "n": 18837,
+  "a": "GIRAVOLTA",
+  "b": "POB Binzago SMALL",
+  "d": "2026-11-28",
+  "t": "11:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+ },
+ {
+  "g": 3,
+  "n": 18838,
+  "a": "BASKET CESANO SEVESO BIANCO",
+  "b": "AURORA DESIO 94 BLU",
+  "d": "2026-11-28",
+  "t": "17:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+ },
+ {
+  "g": 3,
+  "n": 18839,
+  "a": "LISSONE ROSSO",
+  "b": "NUOVO BASKET GROANE 2005",
+  "d": "2026-11-29",
+  "t": "10:00",
+  "pa": null,
+  "pb": null,
+  "v": "CASA"
+ },
+ {
+  "g": 4,
+  "n": 18840,
+  "a": "AURORA DESIO 94 BLU",
+  "b": "KENNEDY",
+  "d": "2026-11-21",
+  "t": "11:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+ },
+ {
+  "g": 4,
+  "n": 18842,
+  "a": "NUOVO BASKET GROANE 2005",
+  "b": "BASKET CESANO SEVESO BIANCO",
+  "d": "2026-12-13",
+  "t": "09:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · Via Superga 5, Lentate Sul Seveso"
+ },
+ {
+  "g": 4,
+  "n": 18841,
+  "a": "POB Binzago SMALL",
+  "b": "LISSONE ROSSO",
+  "d": "2026-12-13",
+  "t": "11:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+ },
+ {
+  "g": 5,
+  "n": 18844,
+  "a": "KENNEDY",
+  "b": "NUOVO BASKET GROANE 2005",
+  "d": "2026-12-19",
+  "t": "09:30",
+  "pa": null,
+  "pb": null,
+  "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate"
+ },
+ {
+  "g": 5,
+  "n": 18845,
+  "a": "BASKET CESANO SEVESO BIANCO",
+  "b": "LISSONE ROSSO",
+  "d": "2026-12-19",
+  "t": "10:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+ },
+ {
+  "g": 5,
+  "n": 18843,
+  "a": "GIRAVOLTA",
+  "b": "AURORA DESIO 94 BLU",
+  "d": "2026-12-20",
+  "t": "14:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+ },
+ {
+  "g": 6,
+  "n": 18847,
+  "a": "BASKET CESANO SEVESO BIANCO",
+  "b": "KENNEDY",
+  "d": "2027-01-09",
+  "t": "14:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+ },
+ {
+  "g": 6,
+  "n": 18846,
+  "a": "LISSONE ROSSO",
+  "b": "GIRAVOLTA",
+  "d": "2027-01-10",
+  "t": "10:00",
+  "pa": null,
+  "pb": null,
+  "v": "CASA"
+ },
+ {
+  "g": 6,
+  "n": 18848,
+  "a": "AURORA DESIO 94 BLU",
+  "b": "POB Binzago SMALL",
+  "d": "2027-01-10",
+  "t": "11:00",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+ },
+ {
+  "g": 7,
+  "n": 18850,
+  "a": "KENNEDY",
+  "b": "LISSONE ROSSO",
+  "d": "2027-01-16",
+  "t": "10:30",
+  "pa": null,
+  "pb": null,
+  "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate"
+ },
+ {
+  "g": 7,
+  "n": 18851,
+  "a": "GIRAVOLTA",
+  "b": "BASKET CESANO SEVESO BIANCO",
+  "d": "2027-01-16",
+  "t": "11:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+ },
+ {
+  "g": 7,
+  "n": 18849,
+  "a": "POB Binzago SMALL",
+  "b": "NUOVO BASKET GROANE 2005",
+  "d": "2027-01-17",
+  "t": "11:30",
+  "pa": null,
+  "pb": null,
+  "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+ }
+];
+const GIORNATA_DATA = {"1": "2026-11-14", "2": "2026-11-21", "3": "2026-11-28", "4": "2026-12-12", "5": "2026-12-19", "6": "2027-01-09", "7": "2027-01-16"};
+const AGGIORNATO = "11 novembre 2026, 21:26";
+/* Loghi (facoltativo): cartella "loghi" accanto a index.html, es. 'LISSONE ROSSO': 'loghi/lissone-rosso.png' */
+const LOGHI = {
+  'LISSONE ROSSO': 'loghi/lissone-rosso.png',
+  'AURORA DESIO 94 BLU': 'loghi/aurora-desio-94.png',
+  'GIRAVOLTA': 'loghi/giravolta.png',
+  'BASKET CESANO SEVESO BIANCO': 'loghi/cesano-seveso.png',
+  'NUOVO BASKET GROANE 2005': 'loghi/basket-groane.png',
+  'KENNEDY': 'loghi/kennedy.png',
+};
+const N=null;
+
+const PLACE = {
+  'LISSONE ROSSO':             {c1:'#d94c3f', c2:'#ffffff', t:'LR'},
+  'AURORA DESIO 94 BLU':       {c1:'#2a3f8f', c2:'#ffffff', t:'AD'},
+  'NUOVO BASKET GROANE 2005':  {c1:'#1f7a3d', c2:'#ffffff', t:'NG'},
+  'KENNEDY':                   {c1:'#5b2d8a', c2:'#ffffff', t:'KN'},
+  'POB Binzago SMALL':         {c1:'#8e1f2f', c2:'#ffffff', t:'PB'},
+  'GIRAVOLTA':                 {c1:'#c98a1f', c2:'#1a1a1a', t:'GV'},
+  'BASKET CESANO SEVESO BIANCO':{c1:'#ffffff', c2:'#1a3a8f', t:'CS', stroke:'#1a3a8f'},
+};
+const ORDINE_FIP = ['AURORA DESIO 94 BLU','NUOVO BASKET GROANE 2005','KENNEDY','POB Binzago SMALL','GIRAVOLTA','LISSONE ROSSO','BASKET CESANO SEVESO BIANCO'];
+const CASA = 'Palestra Parri · Via Montegrappa, Muggiò';
+const DOW=['dom','lun','mar','mer','gio','ven','sab'];
+const MON=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
+const MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+const venue=g=>g.v==='CASA'?CASA:(g.v||'');
+const played=g=>g.pa!==null&&g.pb!==null;
+const isBlu=g=>g.a==='LISSONE ROSSO'||g.b==='LISSONE ROSSO';
+
+function crestSVG(name){
+  const p=PLACE[name]||{c1:'#888',c2:'#fff',t:name.slice(0,2)};
+  const st=p.stroke||p.c1;
+  return `<svg viewBox="0 0 44 48" aria-hidden="true"><path d="M22 2 L40 8 V24 C40 35 32 42 22 46 C12 42 4 35 4 24 V8 Z" fill="${p.c1}" stroke="${st}" stroke-width="2.5"/><path d="M22 6 L36 10.5 V24 C36 32.5 30 38.5 22 42 C14 38.5 8 32.5 8 24 V10.5 Z" fill="none" stroke="${p.c2}" stroke-width="1" opacity=".7"/><text x="22" y="29" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-weight="800" font-size="${p.t.length>2?15:18}" fill="${p.c2}">${p.t}</text></svg>`;
+}
+const crestInner=name=>LOGHI[name]?`<img src="${LOGHI[name]}" alt="Stemma ${name}">`:crestSVG(name);
+
+const today=new Date(); today.setHours(0,0,0,0);
+const when=g=>new Date(g.d+'T00:00:00');
+
+/* ---------- Calendario Blu ---------- */
+const blu=GARE.filter(g=>isBlu(g)).sort((x,y)=>(x.d+(x.t||''))<(y.d+(y.t||''))?-1:1);
+const nextIdx=blu.findIndex(g=>when(g)>=today);
+const list=document.getElementById('list');
+list.innerHTML='';
+let V=0,P=0,F=0,S=0,any=false;
+function matchCard(g,opts){
+  const done=played(g);
+  const dt=g.d?when(g):null;
+  const home=g.a==='LISSONE ROSSO'&&true;
+  const homeGame=(venue(g)===CASA);
+  let badge='';
+  if(opts.blu&&done){
+    const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
+    if(us>them)badge='<span class="res w">Vinta</span>';
+    else if(us<them)badge='<span class="res l">Persa</span>';
+    else badge='<span class="res d">Pari</span>';
+  }
+  const win=done?(g.pa>g.pb?'a':(g.pb>g.pa?'b':'')):'';
+  const row=(side,name,pt)=>`
+    <div class="row">
+      <div class="crest ro">${crestInner(name)}</div>
+      <div class="team${name==='LISSONE ROSSO'?' us':''}">${name}</div>
+      <div class="score ro${win===side?' win':''}" aria-label="Punti ${name}">${pt===null?'':pt}</div>
+    </div>`;
+  const dateBlock=dt
+    ?`<div class="date"><span class="dow">${DOW[dt.getDay()]}</span><span class="day">${dt.getDate()}</span><span class="mon">${MON[dt.getMonth()]}</span>${g.t?`<span class="time">${g.t}</span>`:''}</div>`
+    :`<div class="date dateg"><span class="dow">giornata</span><span class="day">${g.g}</span><span class="mon">andata</span></div>`;
+  const el=document.createElement('article');
+  el.className='match'+(homeGame?' home':'')+(opts.next?' next':'');
+  const v=venue(g);
+  el.innerHTML=`${dateBlock}
+    <div class="body">
+      ${row('a',g.a,g.pa)}${row('b',g.b,g.pb)}
+      <div class="foot">
+        ${opts.blu?`<span class="tag">${homeGame?'Casa':'Trasferta'}</span>`:''}
+        ${v?`<a class="maploc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v)}" target="_blank" rel="noopener">${v}</a>`:''}
+        ${opts.next?'<span class="nextflag">Prossima</span>':''}
+        ${badge}
+        ${opts.blu&&!done&&g.d?`<button type="button" class="icsone" data-gara="${g.n}" title="Aggiungi questa partita al calendario" aria-label="Aggiungi questa partita al calendario">📅</button>`:''}
+        ${opts.blu&&g.n?`<button type="button" class="icsone share" data-gara="${g.n}" title="Condividi" aria-label="Condividi">📤</button>`:''}
+      </div>
+      ${opts.next?`<div class="foot" style="margin-top:2px"><span class="meteo" id="meteo"></span></div>`:''}
+      ${g.n?`<div class="foot" style="margin-top:2px"><span>Gara ${g.n}</span></div>`:''}
+    </div>`;
+  return el;
+}
+blu.forEach((g,i)=>{
+  if(played(g)){
+    any=true;
+    const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
+    F+=us;S+=them; if(us>them)V++; else if(us<them)P++;
+  }
+  list.appendChild(matchCard(g,{blu:true,next:i===nextIdx}));
+});
+document.getElementById('sV').textContent=V;
+document.getElementById('sP').textContent=P;
+document.getElementById('sF').textContent=F;
+document.getElementById('sS').textContent=S;
+
+/* ---------- Meteo prossima partita ---------- */
+(function(){
+  if(nextIdx<0)return;
+  const g=blu[nextIdx];
+  if(!g||!g.d)return;
+  const giorni=(when(g)-today)/864e5;
+  if(giorni<0||giorni>15)return; // fuori dal range attendibile delle previsioni
+  const el=document.getElementById('meteo');
+  if(!el)return;
+  const homeGame=(venue(g)===CASA);
+  let citta='Muggiò';
+  if(!homeGame){
+    let v=venue(g).replace(/\s*\([^)]*\)\s*$/,'').trim();
+    const parts=v.split(',');
+    if(parts.length>1){citta=parts[parts.length-1].trim();}
+    else{
+      const parole=v.split(/\s+/), out=[];
+      for(let i=parole.length-1;i>=0;i--){
+        if(/^[A-ZÀ-Ý.'-]+$/.test(parole[i]))out.unshift(parole[i]); else break;
+      }
+      citta=out.length?out.join(' '):parole[parole.length-1];
+    }
+  }
+  const METEO={0:'☀️ sereno',1:'🌤️ poco nuvoloso',2:'⛅ nuvoloso',3:'☁️ coperto',45:'🌫️ nebbia',48:'🌫️ nebbia',
+    51:'🌦️ pioviggine',53:'🌦️ pioviggine',55:'🌦️ pioviggine',61:'🌧️ pioggia debole',63:'🌧️ pioggia',65:'🌧️ pioggia forte',
+    66:'🌧️ pioggia gelata',67:'🌧️ pioggia gelata',71:'❄️ neve debole',73:'❄️ neve',75:'❄️ neve forte',77:'❄️ neve',
+    80:'🌦️ rovesci',81:'🌦️ rovesci',82:'⛈️ rovesci forti',85:'🌨️ rovesci di neve',86:'🌨️ rovesci di neve',
+    95:'⛈️ temporale',96:'⛈️ temporale',99:'⛈️ temporale'};
+  fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(citta)+'&count=1&language=it&country=IT')
+    .then(r=>r.json())
+    .then(geo=>{
+      const p=geo && geo.results && geo.results[0];
+      if(!p)return;
+      const data=g.d;
+      if(!g.t){
+        return fetch('https://api.open-meteo.com/v1/forecast?latitude='+p.latitude+'&longitude='+p.longitude+'&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe%2FRome&start_date='+data+'&end_date='+data)
+          .then(r=>r.json())
+          .then(f=>{
+            const d=f&&f.daily;
+            if(!d||!d.weathercode||d.weathercode[0]==null)return;
+            const desc=METEO[d.weathercode[0]]||'';
+            const tmax=Math.round(d.temperature_2m_max[0]), tmin=Math.round(d.temperature_2m_min[0]);
+            el.textContent=`Meteo a ${citta}: ${desc}, ${tmin}–${tmax}°C`;
+          });
+      }
+      return fetch('https://api.open-meteo.com/v1/forecast?latitude='+p.latitude+'&longitude='+p.longitude+'&hourly=temperature_2m,weathercode&timezone=Europe%2FRome&start_date='+data+'&end_date='+data)
+        .then(r=>r.json())
+        .then(f=>{
+          const h=f&&f.hourly;
+          if(!h||!h.time)return;
+          const [oreStr,minStr]=g.t.split(':');
+          const oraInizio=+oreStr;
+          const fine=new Date(data+'T'+g.t+':00'); fine.setMinutes(fine.getMinutes()+90);
+          const oraFine=fine.getHours();
+          const idx=h.time.findIndex(t=>t===data+'T'+String(oraInizio).padStart(2,'0')+':00');
+          if(idx<0)return;
+          const idx2=h.time.findIndex(t=>t===data+'T'+String(oraFine).padStart(2,'0')+':00');
+          const t1=Math.round(h.temperature_2m[idx]);
+          const t2=idx2>=0?Math.round(h.temperature_2m[idx2]):t1;
+          const desc=METEO[h.weathercode[idx]]||'';
+          const tmin=Math.min(t1,t2), tmax=Math.max(t1,t2);
+          el.textContent=`Meteo a ${citta} alle ${g.t}: ${desc}, ${tmin===tmax?tmin+'°C':tmin+'–'+tmax+'°C'}`;
+        });
+    }).catch(()=>{});
+})();
+
+/* ---------- Esportazione calendario (.ics) ---------- */
+function pad2(n){return String(n).padStart(2,'0')}
+function icsEsc(s){return String(s).replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n')}
+function icsDateTime(d,t){const [h,m]=t.split(':');return d.replace(/-/g,'')+'T'+pad2(h)+pad2(m)+'00'}
+function icsDateEnd(d,t,addMin){const dt=new Date(d+'T'+t+':00');dt.setMinutes(dt.getMinutes()+addMin);
+  return dt.getFullYear()+pad2(dt.getMonth()+1)+pad2(dt.getDate())+'T'+pad2(dt.getHours())+pad2(dt.getMinutes())+'00'}
+function icsEvent(g,i){
+  const now=new Date(),stamp=now.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  const opp=g.a==='LISSONE ROSSO'?g.b:g.a, casa=venue(g)===CASA, v=venue(g);
+  const lines=['BEGIN:VEVENT','UID:gara-'+(g.n||i)+'@lissone-blu-u13','DTSTAMP:'+stamp];
+  if(g.t){
+    lines.push('DTSTART:'+icsDateTime(g.d,g.t));
+    lines.push('DTEND:'+icsDateEnd(g.d,g.t,90));
+  }else{
+    lines.push('DTSTART;VALUE=DATE:'+g.d.replace(/-/g,''));
+  }
+  lines.push('SUMMARY:'+icsEsc(`Lissone Rosso${casa?' (Casa)':' (Trasferta)'} - ${opp}`));
+  if(v)lines.push('LOCATION:'+icsEsc(v));
+  lines.push('END:VEVENT');
+  return lines;
+}
+function icsCalendar(eventLines){
+  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pall. Lissone Rosso//Calendario U13//IT','CALSCALE:GREGORIAN',
+    ...eventLines,'END:VCALENDAR'].join('\r\n');
+}
+function downloadText(text,filename){
+  const blob=new Blob([text],{type:'text/calendar;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=filename;
+  document.body.appendChild(a);a.click();a.remove();
+}
+document.getElementById('icsBtn').addEventListener('click',()=>{
+  const eventLines=blu.filter(g=>!played(g)&&g.d).flatMap((g,i)=>icsEvent(g,i));
+  downloadText(icsCalendar(eventLines),'calendario-lissone-blu-u13.ics');
+});
+document.getElementById('pdfBtn').addEventListener('click',()=>window.print());
+function buildShareText(g){
+  const opp=g.a==='LISSONE ROSSO'?g.b:g.a, casa=venue(g)===CASA, v=venue(g);
+  if(played(g)){
+    const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
+    const esito=us>them?'Vinta':(us<them?'Persa':'Pari');
+    return `🏀 Lissone Rosso - ${opp}: ${us}-${them} (${esito})\n${location.href}`;
+  }
+  const dt=g.d?when(g):null;
+  const dataStr=dt?`${DOW[dt.getDay()]} ${dt.getDate()} ${MON[dt.getMonth()]}`:'';
+  return `🏀 Lissone Rosso - ${opp}\n${dataStr}${g.t?' ore '+g.t:''} · ${casa?'Casa':'Trasferta'}${v?' · '+v:''}\n${location.href}`;
+}
+list.addEventListener('click',e=>{
+  const sh=e.target.closest('.share');
+  if(sh){
+    const g=blu.find(x=>String(x.n)===sh.dataset.gara);
+    if(!g)return;
+    const text=buildShareText(g);
+    if(navigator.share)navigator.share({text}).catch(()=>{});
+    else window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+    return;
+  }
+  const btn=e.target.closest('.icsone');
+  if(!btn)return;
+  const g=blu.find(x=>String(x.n)===btn.dataset.gara);
+  if(!g)return;
+  const opp=g.a==='LISSONE ROSSO'?g.b:g.a;
+  downloadText(icsCalendar(icsEvent(g,0)),`partita-${g.n||'lissone-blu'}-${opp.toLowerCase().replace(/\s+/g,'-')}.ics`);
+});
+
+/* ---------- Classifica ---------- */
+const T={};
+ORDINE_FIP.forEach(n=>T[n]={n,g:0,v:0,p:0,pf:0,ps:0});
+GARE.filter(played).forEach(m=>{
+  const A=T[m.a],B=T[m.b]; if(!A||!B) return;
+  A.g++;B.g++;A.pf+=m.pa;A.ps+=m.pb;B.pf+=m.pb;B.ps+=m.pa;
+  if(m.pa>m.pb){A.v++;B.p++}else if(m.pb>m.pa){B.v++;A.p++}
+});
+const rows=Object.values(T).map(t=>({...t,pt:t.v*2,df:t.pf-t.ps}));
+rows.sort((x,y)=>y.pt-x.pt||y.df-x.df||ORDINE_FIP.indexOf(x.n)-ORDINE_FIP.indexOf(y.n));
+const cb=document.getElementById('clbody'); cb.innerHTML='';
+rows.forEach((t,i)=>{
+  const tr=document.createElement('tr');
+  if(t.n==='LISSONE ROSSO') tr.className='us';
+  const d=t.df>0?`<span class="diffp">+${t.df}</span>`:(t.df<0?`<span class="diffn">−${Math.abs(t.df)}</span>`:'0');
+  tr.innerHTML=`<td class="pos">${i+1}</td>
+    <td class="sq"><div class="sqin"><div class="crest ro">${crestInner(t.n)}</div><b>${t.n}</b></div></td>
+    <td>${t.g}</td><td>${t.v}</td><td>${t.p}</td><td class="c-pp">${t.pf}</td><td class="c-pp">${t.ps}</td><td>${d}</td>
+    <td class="pt"><span class="ptpill">${t.pt}</span></td>`;
+  cb.appendChild(tr);
+});
+
+/* ---------- Risultati e gare del girone, giornata per giornata ---------- */
+const lab=k=>k<=5?`${k}ª giornata di andata`:`${k-5}ª giornata di ritorno`;
+const dshort=iso=>{const x=new Date(iso+'T00:00:00');return `${x.getDate()} ${MON[x.getMonth()]}`};
+const gare=document.getElementById('gare'); gare.innerHTML='';
+const gsel=document.getElementById('gsel'); gsel.innerHTML='';
+for(let k=1;k<=10;k++){
+  const arr=GARE.filter(g=>g.g===k).sort((x,y)=>((x.d||'')+(x.t||''))<((y.d||'')+(y.t||''))?-1:1);
+  const blk=document.createElement('div'); blk.className='gblock'; blk.dataset.g=k;
+  const h=document.createElement('h3'); h.className='gio';
+  h.textContent=`${lab(k)} · ${when({d:GIORNATA_DATA[k]}).getDate()} ${MESI[when({d:GIORNATA_DATA[k]}).getMonth()]}`;
+  blk.appendChild(h);
+  const box=document.createElement('div'); box.className='list';
+  arr.forEach(g=>box.appendChild(matchCard(g,{blu:false,next:false})));
+  blk.appendChild(box); gare.appendChild(blk);
+  const o=document.createElement('option'); o.value=k; o.textContent=`${k<=5?k+'ª andata':(k-5)+'ª ritorno'} · ${dshort(GIORNATA_DATA[k])}`; gsel.appendChild(o);
+}
+let curG=1;
+for(let k=1;k<=10;k++){ if(GARE.some(g=>g.g===k&&!played(g))){curG=k;break} curG=k }
+function showG(k){
+  curG=Math.min(10,Math.max(1,k));
+  gsel.value=curG;
+  gare.querySelectorAll('.gblock').forEach(b=>{b.hidden=(+b.dataset.g!==curG)});
+  document.getElementById('gprev').disabled=curG===1;
+  document.getElementById('gnext').disabled=curG===10;
+}
+gsel.addEventListener('change',()=>showG(+gsel.value));
+document.getElementById('gprev').addEventListener('click',()=>showG(curG-1));
+document.getElementById('gnext').addEventListener('click',()=>showG(curG+1));
+document.getElementById('src').textContent='Fonte: FIP · Under 13 Maschile Regionale, Qualificazione'+(AGGIORNATO?' · aggiornato al '+AGGIORNATO:'');
+document.getElementById('upd').textContent=AGGIORNATO?('Ultimo aggiornamento: '+AGGIORNATO):'';
+(function(){
+  if(!AGGIORNATO)return;
+  const m=AGGIORNATO.match(/^(\d+)\s+(\S+)\s+(\d+),\s+(\d+):(\d+)/);
+  if(!m)return;
+  const mese=MESI.indexOf(m[2]);
+  if(mese<0)return;
+  const dt=new Date(+m[3],mese,+m[1],+m[4],+m[5]);
+  const giorni=Math.floor((Date.now()-dt.getTime())/864e5);
+  if(giorni>=2){
+    const p=document.createElement('p');
+    p.className='upd';
+    p.style.cssText='color:var(--loss);font-weight:600';
+    p.textContent=`⚠️ Nessun aggiornamento da ${giorni} giorni: probabilmente la FIP non ha ancora pubblicato i dati più recenti. Il sito si aggiorna da solo non appena saranno disponibili.`;
+    document.getElementById('upd').insertAdjacentElement('afterend',p);
+  }
+})();
+
+/* ---------- Schede ---------- */
+document.documentElement.classList.add('js');
+const VIEWS={calendario:document.getElementById('calendario'),girone:document.getElementById('girone'),allenamenti:document.getElementById('allenamenti')};
+const TABS={calendario:document.getElementById('t-cal'),girone:document.getElementById('t-gir'),allenamenti:document.getElementById('t-tra')};
+function show(which){
+  if(!VIEWS[which])which='calendario';
+  for(const k in VIEWS){VIEWS[k].hidden=(k!==which);TABS[k].setAttribute('aria-current',String(k===which))}
+}
+Object.keys(TABS).forEach(k=>TABS[k].addEventListener('click',e=>{e.preventDefault();show(k)}));
+show(location.hash.replace('#','')||'calendario');
+showG(curG);
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+/* ---------- Installa come app ---------- */
+(function(){
+  const btn=document.getElementById('installBtn');
+  if(!btn)return;
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  let deferredPrompt=null;
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();
+    deferredPrompt=e;
+    btn.hidden=false;
+  });
+  if(isIOS && !isStandalone)btn.hidden=false;
+  btn.addEventListener('click',async()=>{
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt=null;
+      btn.hidden=true;
+    }else if(isIOS){
+      alert('Per installare: tocca il pulsante Condividi (il quadrato con la freccia in alto), poi "Aggiungi alla schermata Home".');
+    }
+  });
+  window.addEventListener('appinstalled',()=>{btn.hidden=true});
+})();
+
+</script>
+
+
+</body></html>

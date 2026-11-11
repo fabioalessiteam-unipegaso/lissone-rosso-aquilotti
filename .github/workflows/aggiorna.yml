@@ -1,0 +1,30 @@
+name: Aggiorna calendario e classifica
+
+on:
+  schedule:
+    - cron: "0 11,21 * * *"    # tutti i giorni, verso le 12:00 e le 22:00 (ora italiana; un'ora dopo nel periodo con ora legale)
+  workflow_dispatch:           # pulsante "Run workflow" per aggiornare subito
+
+permissions:
+  contents: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install pdfplumber
+      - run: npm install jsdom
+      - run: python aggiorna.py
+      - name: Pubblica se è cambiato qualcosa
+        run: |
+          git config user.name "aggiornamento-automatico"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html dati.json
+          git diff --cached --quiet || (git commit -m "Aggiornamento risultati" && git push)
