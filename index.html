@@ -763,7 +763,7 @@ const GARE = [
  }
 ];
 const GIORNATA_DATA = {"1": "2026-11-14", "2": "2026-11-21", "3": "2026-11-28", "4": "2026-12-12", "5": "2026-12-19", "6": "2027-01-09", "7": "2027-01-16"};
-const AGGIORNATO = "11 novembre 2026, 22:17";
+const AGGIORNATO = "11 novembre 2026, 23:06";
 /* Loghi (facoltativo): cartella "loghi" accanto a index.html, es. 'LISSONE ROSSO': 'loghi/lissone-rosso.png' */
 const LOGHI = {
   'LISSONE ROSSO': 'loghi/lissone-rosso.png',
@@ -1048,7 +1048,7 @@ function showG(k){
 gsel.addEventListener('change',()=>showG(+gsel.value));
 document.getElementById('gprev').addEventListener('click',()=>showG(curG-1));
 document.getElementById('gnext').addEventListener('click',()=>showG(curG+1));
-document.getElementById('src').textContent='Fonte: FIP · Under 13 Maschile Regionale, Qualificazione'+(AGGIORNATO?' · aggiornato al '+AGGIORNATO:'');
+document.getElementById('src').textContent='Fonte: FIP · Aquilotti Small, Girone Bianco'+(AGGIORNATO?' · aggiornato al '+AGGIORNATO:'');
 document.getElementById('upd').textContent=AGGIORNATO?('Ultimo aggiornamento: '+AGGIORNATO):'';
 (function(){
   if(!AGGIORNATO)return;
