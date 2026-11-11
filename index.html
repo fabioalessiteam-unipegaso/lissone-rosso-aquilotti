@@ -29,20 +29,20 @@
   --blue-glow: rgba(232,57,47,0.35);
   --blue-light:#ff6b5e;
   --blue-dark: #8f1f1a;
-  --orange:    #1a3a8f;
-  --orange-glow:rgba(26,58,143,0.35);
-  --orange-light:#5b8fff;
+  --orange:    #ff7a20;
+  --orange-glow:rgba(255,122,32,0.35);
+  --orange-light:#ffaa60;
   --win:       #00e676;
   --win-bg:    rgba(0,230,118,0.12);
   --loss:      #ff5252;
   --loss-bg:   rgba(255,82,82,0.12);
-  --line:      rgba(45,106,255,0.15);
+  --line:      rgba(232,57,47,0.15);
   --line2:     rgba(255,255,255,0.06);
   --input-bg:  rgba(5,13,30,0.8);
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
-  --shadow-blue: 0 0 30px rgba(45,106,255,0.2);
+  --shadow-blue: 0 0 30px rgba(232,57,47,0.2);
   --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,7 +68,7 @@ body::before {
   left: -100px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(45,106,255,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,57,47,0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -92,12 +92,12 @@ body::after {
 }
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, #0f2a6b 0%, #1a3a9f 45%, #0d2260 100%);
+  background: linear-gradient(135deg, #5c0f14 0%, #9f1f27 45%, #4a0c10 100%);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-blue), inset 0 1px 0 rgba(255,255,255,0.1);
-  border: 1px solid rgba(45,106,255,0.3);
+  border: 1px solid rgba(232,57,47,0.3);
 }
 .hero::before {
   content: '';
@@ -139,11 +139,11 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 3px rgba(45,106,255,0.5), 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 0 3px rgba(232,57,47,0.5), 0 4px 20px rgba(0,0,0,0.4);
   padding: 7px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.hero-logo:hover { transform: scale(1.05); box-shadow: 0 0 0 4px rgba(45,106,255,0.7), 0 6px 28px rgba(0,0,0,0.5); }
+.hero-logo:hover { transform: scale(1.05); box-shadow: 0 0 0 4px rgba(232,57,47,0.7), 0 6px 28px rgba(0,0,0,0.5); }
 .hero-logo img { width: 100%; height: 100%; object-fit: contain; }
 .hero-text { flex: 1; min-width: 0; }
 .hero h1 {
@@ -220,8 +220,8 @@ body::after {
 /* MATCH CARDS */
 .list { display:grid; gap:10px; }
 .match { background:var(--surface); border:1px solid var(--line2); border-radius:var(--radius-md); display:grid; grid-template-columns:76px 1fr; overflow:hidden; break-inside:avoid; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
-.match:hover { transform: translateX(2px); border-color: rgba(45,106,255,0.25); box-shadow: var(--shadow-card); }
-.match.home .date { background:linear-gradient(180deg,#112070 0%,#0d1855 100%); }
+.match:hover { transform: translateX(2px); border-color: rgba(232,57,47,0.25); box-shadow: var(--shadow-card); }
+.match.home .date { background:linear-gradient(180deg,#8f1f1a 0%,#5c1210 100%); }
 .date { background:linear-gradient(180deg,#6b3500 0%,#4a2500 100%); color:#fff; padding:12px 6px; text-align:center; display:flex; flex-direction:column; justify-content:center; gap:1px; }
 .date .dow { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; opacity:.8; }
 .date .day { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:38px; line-height:1; }
@@ -245,7 +245,7 @@ body::after {
 .foot { display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; margin-top:10px; font-size:12.5px; color:var(--muted); }
 .foot a.maploc { color:inherit; text-decoration:underline; text-decoration-style:dotted; text-underline-offset:2px; }
 .tag { font-weight:700; font-size:11px; border-radius:999px; padding:2px 10px; letter-spacing:.06em; text-transform:uppercase; background:linear-gradient(135deg,var(--blue-dark),var(--blue)); color:#fff; }
-.match:not(.home) .tag { background:linear-gradient(135deg,#0a1a4a,var(--orange)); }
+.match:not(.home) .tag { background:linear-gradient(135deg,#6b3300,var(--orange)); }
 .res { margin-left:auto; font-weight:700; font-size:11px; border-radius:999px; padding:3px 10px; letter-spacing:.06em; text-transform:uppercase; display:none; }
 .res.w { display:inline-block; background:var(--win-bg); color:var(--win); border:1px solid rgba(0,230,118,.3); }
 .res.l { display:inline-block; background:var(--loss-bg); color:var(--loss); border:1px solid rgba(255,82,82,.3); }
@@ -270,8 +270,8 @@ table.cl { width:100%; border-collapse:collapse; font-size:14.5px; }
 .sqin .crest { width:26px; height:28px; flex:none; }
 .sqin b { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px; letter-spacing:.01em; line-height:1.1; }
 .cl td.pt { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22px; }
-.cl .ptpill { display:inline-block; min-width:36px; border-radius:8px; padding:0 6px; background:rgba(45,106,255,.12); border:1px solid rgba(45,106,255,.25); color:var(--blue-light); }
-.cl tr.us { background: rgba(45,106,255,0.08); }
+.cl .ptpill { display:inline-block; min-width:36px; border-radius:8px; padding:0 6px; background:rgba(232,57,47,.12); border:1px solid rgba(232,57,47,.25); color:var(--blue-light); }
+.cl tr.us { background: rgba(232,57,47,0.08); }
 .cl tr.us b { color: var(--blue-light); }
 .diffp { color:var(--win); font-weight:600; }
 .diffn { color:var(--loss); font-weight:600; }
@@ -763,7 +763,7 @@ const GARE = [
  }
 ];
 const GIORNATA_DATA = {"1": "2026-11-14", "2": "2026-11-21", "3": "2026-11-28", "4": "2026-12-12", "5": "2026-12-19", "6": "2027-01-09", "7": "2027-01-16"};
-const AGGIORNATO = "11 novembre 2026, 22:12";
+const AGGIORNATO = "11 novembre 2026, 22:17";
 /* Loghi (facoltativo): cartella "loghi" accanto a index.html, es. 'LISSONE ROSSO': 'loghi/lissone-rosso.png' */
 const LOGHI = {
   'LISSONE ROSSO': 'loghi/lissone-rosso.png',
@@ -1019,11 +1019,13 @@ rows.forEach((t,i)=>{
 });
 
 /* ---------- Risultati e gare del girone, giornata per giornata ---------- */
-const lab=k=>k<=5?`${k}ª giornata di andata`:`${k-5}ª giornata di ritorno`;
+const NG=Math.max(...Object.keys(GIORNATA_DATA).map(Number));
+const N_ANDATA=3; // giornate di andata in questo girone (le restanti sono ritorno)
+const lab=k=>k<=N_ANDATA?`${k}ª giornata di andata`:`${k-N_ANDATA}ª giornata di ritorno`;
 const dshort=iso=>{const x=new Date(iso+'T00:00:00');return `${x.getDate()} ${MON[x.getMonth()]}`};
 const gare=document.getElementById('gare'); gare.innerHTML='';
 const gsel=document.getElementById('gsel'); gsel.innerHTML='';
-for(let k=1;k<=10;k++){
+for(let k=1;k<=NG;k++){
   const arr=GARE.filter(g=>g.g===k).sort((x,y)=>((x.d||'')+(x.t||''))<((y.d||'')+(y.t||''))?-1:1);
   const blk=document.createElement('div'); blk.className='gblock'; blk.dataset.g=k;
   const h=document.createElement('h3'); h.className='gio';
@@ -1032,16 +1034,16 @@ for(let k=1;k<=10;k++){
   const box=document.createElement('div'); box.className='list';
   arr.forEach(g=>box.appendChild(matchCard(g,{blu:false,next:false})));
   blk.appendChild(box); gare.appendChild(blk);
-  const o=document.createElement('option'); o.value=k; o.textContent=`${k<=5?k+'ª andata':(k-5)+'ª ritorno'} · ${dshort(GIORNATA_DATA[k])}`; gsel.appendChild(o);
+  const o=document.createElement('option'); o.value=k; o.textContent=`${k<=N_ANDATA?k+'ª andata':(k-N_ANDATA)+'ª ritorno'} · ${dshort(GIORNATA_DATA[k])}`; gsel.appendChild(o);
 }
 let curG=1;
-for(let k=1;k<=10;k++){ if(GARE.some(g=>g.g===k&&!played(g))){curG=k;break} curG=k }
+for(let k=1;k<=NG;k++){ if(GARE.some(g=>g.g===k&&!played(g))){curG=k;break} curG=k }
 function showG(k){
-  curG=Math.min(10,Math.max(1,k));
+  curG=Math.min(NG,Math.max(1,k));
   gsel.value=curG;
   gare.querySelectorAll('.gblock').forEach(b=>{b.hidden=(+b.dataset.g!==curG)});
   document.getElementById('gprev').disabled=curG===1;
-  document.getElementById('gnext').disabled=curG===10;
+  document.getElementById('gnext').disabled=curG===NG;
 }
 gsel.addEventListener('change',()=>showG(+gsel.value));
 document.getElementById('gprev').addEventListener('click',()=>showG(curG-1));
