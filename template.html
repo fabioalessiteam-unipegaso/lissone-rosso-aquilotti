@@ -699,8 +699,8 @@ document.getElementById('upd').textContent=AGGIORNATO?('Ultimo aggiornamento: '+
   if(giorni>=2){
     const p=document.createElement('p');
     p.className='upd';
-    p.style.cssText='color:var(--loss);font-weight:600';
-    p.textContent=`⚠️ Nessun aggiornamento da ${giorni} giorni: probabilmente la FIP non ha ancora pubblicato i dati più recenti. Il sito si aggiorna da solo non appena saranno disponibili.`;
+    p.style.cssText='color:var(--muted)';
+    p.textContent=`Nessun aggiornamento da ${giorni} giorni: probabilmente la FIP non ha ancora pubblicato i dati più recenti. Il sito si aggiorna da solo non appena saranno disponibili.`;
     document.getElementById('upd').insertAdjacentElement('afterend',p);
   }
 })();
