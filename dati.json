@@ -46,17 +46,6 @@
   },
   {
    "g": 2,
-   "n": 18836,
-   "a": "POB Binzago SMALL",
-   "b": "KENNEDY",
-   "d": "2026-11-22",
-   "t": "09:30",
-   "pa": null,
-   "pb": null,
-   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
-  },
-  {
-   "g": 2,
    "n": 18835,
    "a": "AURORA DESIO 94 BLU",
    "b": "LISSONE ROSSO",
@@ -65,6 +54,17 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+  },
+  {
+   "g": 2,
+   "n": 18836,
+   "a": "POB Binzago SMALL",
+   "b": "KENNEDY",
+   "d": "2026-12-03",
+   "t": "17:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
   },
   {
    "g": 3,
@@ -232,14 +232,14 @@
    "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
   }
  ],
- "aggiornato": "11 novembre 2026, 23:12",
+ "aggiornato": "21 novembre 2026, 18:48",
  "punti": {
   "AURORA DESIO 94 BLU": 0,
   "NUOVO BASKET GROANE 2005": 0,
   "KENNEDY": 0,
   "POB Binzago SMALL": 0,
-  "GIRAVOLTA": 0,
   "LISSONE ROSSO": 0,
+  "GIRAVOLTA": 0,
   "BASKET CESANO SEVESO BIANCO": 0
  }
 }
