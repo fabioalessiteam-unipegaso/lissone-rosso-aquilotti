@@ -136,36 +136,6 @@ def unisci(nuove, vecchie):
             nuove.append(g)
     return nuove
 
-# ---------- fallback: punteggio dalla pagina risultati (quando manca nel PDF) ----------
-RE_SQUADRA_PUNTI = re.compile(
-    r'team__name">\s*([^<]+?)\s*</div>\s*<div class="team__points">\s*(\d+)\s*</div>')
-
-def punteggio_da_sito(numero):
-    url = f"https://fip.it/risultati/?search=true&numero_gara={numero}"
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (aggiornamento calendario)"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        html = r.read().decode("utf-8", "ignore")
-    squadre = RE_SQUADRA_PUNTI.findall(html)
-    if len(squadre) != 2:
-        return None
-    return {nome_squadra(nome): int(punti) for nome, punti in squadre}
-
-def completa_risultati_mancanti(gare, oggi):
-    """Per le gare già giocate (data passata) ma senza punteggio nel PDF,
-    prova a recuperare il risultato dalla pagina risultati di FIP."""
-    for g in gare:
-        if g["pa"] is not None or g["pb"] is not None:
-            continue
-        if not g["n"] or not g["d"] or g["d"] >= oggi:
-            continue
-        try:
-            punti = punteggio_da_sito(g["n"])
-        except Exception:
-            continue
-        if not punti or g["a"] not in punti or g["b"] not in punti:
-            continue
-        g["pa"], g["pb"] = punti[g["a"]], punti[g["b"]]
-
 # ---------- classifica ufficiale (i punti li calcola FIP, non noi) ----------
 RE_CLASSIFICA_RIGA = re.compile(
     r'<td>\s*\d+\s*</td>\s*<td>\s*<div class="team">.*?team__name">\s*([^<]+?)\s*</div>.*?</div>\s*</td>\s*<td>\s*(\d+)\s*</td>',
@@ -200,8 +170,9 @@ def main():
         sys.exit(f"Lettura del PDF non riuscita (gare lette: {len(nuove)}). Il sito non è stato modificato.")
 
     nuove = unisci(nuove, cache["gare"])
-    oggi = datetime.now(ZoneInfo("Europe/Rome")).strftime("%Y-%m-%d")
-    completa_risultati_mancanti(nuove, oggi)
+    # Per questa categoria (Aquilotti) la FIP non pubblica mai il risultato della
+    # singola gara: niente fallback per-gara, i punteggi arrivano solo a mano (g.tp).
+    # Il tentativo sulla classifica di girone resta (vedi classifica_da_fip sotto).
     nuove.sort(key=lambda g: (g["g"], (g["d"] or "") + (g["t"] or ""), g["n"]))
 
     try:
