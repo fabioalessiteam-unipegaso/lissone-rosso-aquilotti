@@ -90,7 +90,7 @@ def leggi_pdf(percorso):
                     gara = {"g": corrente, "n": int(numeri[0]) if numeri else None,
                             "a": nome_squadra(colA), "b": nome_squadra(colB),
                             "d": giornate[corrente], "t": None, "pa": None, "pb": None, "v": None,
-                            "tp": None}
+                            "tp": None, "d_ov": None, "t_ov": None}
                     s, q = RE_SCORE.match(dx), RE_WHEN.match(dx)
                     if s:
                         gara["pa"], gara["pb"] = int(s.group(1)), int(s.group(2))
@@ -118,9 +118,17 @@ def unisci(nuove, vecchie):
         # "tp" (tempi, minibasket): punteggio reale tempo per tempo [a,b]. La FIP non pubblica
         # punteggi per gli Aquilotti,
         # quindi questo campo viene inserito a mano e va sempre preservato dalla cache.
-        for campo in ("t", "v", "pa", "pb", "tp"):
+        for campo in ("t", "v", "pa", "pb", "tp", "d_ov", "t_ov"):
             if g[campo] is None:
                 g[campo] = p.get(campo)
+        # Rinvio/anticipo comunicato dalla società prima che la FIP aggiorni il PDF:
+        # "d_ov"/"t_ov" forzano data/ora finché il PDF non le riporta uguali (poi si
+        # ripuliscono da soli e torna autorevole la FIP).
+        if g["d_ov"]:
+            if g["d"] == g["d_ov"] and g["t"] == (g["t_ov"] or g["t"]):
+                g["d_ov"], g["t_ov"] = None, None
+            else:
+                g["d"], g["t"] = g["d_ov"], (g["t_ov"] or g["t"])
     # a volte il PDF di FIP omette temporaneamente una gara già nota (es. appena giocata):
     # la manteniamo invece di perderla.
     for n, g in prec.items():

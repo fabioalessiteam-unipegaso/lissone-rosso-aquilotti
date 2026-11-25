@@ -10,7 +10,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Altopiano · Via Groane, 10, Seveso",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 1,
@@ -22,7 +24,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 1,
@@ -34,7 +38,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · Via Superga 5, Lentate Sul Seveso",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 2,
@@ -46,7 +52,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 2,
@@ -83,7 +91,9 @@
      4,
      14
     ]
-   ]
+   ],
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 2,
@@ -95,7 +105,9 @@
    "pa": null,
    "pb": null,
    "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 3,
@@ -107,7 +119,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 3,
@@ -119,7 +133,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Altopiano · Via Groane, 10, Seveso",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 3,
@@ -131,7 +147,9 @@
    "pa": null,
    "pb": null,
    "v": "CASA",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 4,
@@ -143,7 +161,23 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Scuola Rodari · Via Nenni, Desio",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
+  },
+  {
+   "g": 4,
+   "n": 18841,
+   "a": "POB Binzago SMALL",
+   "b": "LISSONE ROSSO",
+   "d": "2026-12-12",
+   "t": "14:30",
+   "pa": null,
+   "pb": null,
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
+   "tp": null,
+   "d_ov": "2026-12-12",
+   "t_ov": "14:30"
   },
   {
    "g": 4,
@@ -155,19 +189,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · Via Superga 5, Lentate Sul Seveso",
-   "tp": null
-  },
-  {
-   "g": 4,
-   "n": 18841,
-   "a": "POB Binzago SMALL",
-   "b": "LISSONE ROSSO",
-   "d": "2026-12-13",
-   "t": "11:30",
-   "pa": null,
-   "pb": null,
-   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 5,
@@ -179,7 +203,9 @@
    "pa": null,
    "pb": null,
    "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 5,
@@ -191,7 +217,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Altopiano · Via Groane, 10, Seveso",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 5,
@@ -203,7 +231,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 6,
@@ -215,7 +245,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Altopiano · Via Groane, 10, Seveso",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 6,
@@ -227,7 +259,9 @@
    "pa": null,
    "pb": null,
    "v": "CASA",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 6,
@@ -239,7 +273,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra Scuola Rodari · Via Nenni, Desio",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 7,
@@ -251,7 +287,9 @@
    "pa": null,
    "pb": null,
    "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 7,
@@ -263,7 +301,9 @@
    "pa": null,
    "pb": null,
    "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 7,
@@ -275,10 +315,12 @@
    "pa": null,
    "pb": null,
    "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
-   "tp": null
+   "tp": null,
+   "d_ov": null,
+   "t_ov": null
   }
  ],
- "aggiornato": "25 novembre 2026, 21:35",
+ "aggiornato": "25 novembre 2026, 21:42",
  "punti": {
   "AURORA DESIO 94 BLU": 0,
   "NUOVO BASKET GROANE 2005": 0,
