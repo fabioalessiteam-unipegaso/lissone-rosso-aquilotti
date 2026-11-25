@@ -26,5 +26,9 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+      # Piccola pausa: l'artifact a volte non è ancora visibile all'API subito dopo
+      # l'upload, e deploy-pages fallisce con "No artifacts found" (ritardo noto
+      # di propagazione lato GitHub, non un problema nostro).
+      - run: sleep 20
       - id: deployment
         uses: actions/deploy-pages@v4
