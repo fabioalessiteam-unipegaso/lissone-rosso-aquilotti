@@ -9,7 +9,8 @@
    "t": "16:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso",
+   "tm": null
   },
   {
    "g": 1,
@@ -20,7 +21,8 @@
    "t": "17:15",
    "pa": null,
    "pb": null,
-   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
+   "tm": null
   },
   {
    "g": 1,
@@ -31,7 +33,8 @@
    "t": "17:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra · Via Superga 5, Lentate Sul Seveso"
+   "v": "Palestra · Via Superga 5, Lentate Sul Seveso",
+   "tm": null
   },
   {
    "g": 2,
@@ -42,7 +45,8 @@
    "t": "09:30",
    "pa": null,
    "pb": null,
-   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
+   "tm": null
   },
   {
    "g": 2,
@@ -53,7 +57,15 @@
    "t": "11:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+   "v": "Palestra Scuola Rodari · Via Nenni, Desio",
+   "tm": [
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "X"
+   ]
   },
   {
    "g": 2,
@@ -64,7 +76,8 @@
    "t": "17:30",
    "pa": null,
    "pb": null,
-   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
+   "tm": null
   },
   {
    "g": 3,
@@ -75,7 +88,8 @@
    "t": "11:30",
    "pa": null,
    "pb": null,
-   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
+   "tm": null
   },
   {
    "g": 3,
@@ -86,7 +100,8 @@
    "t": "17:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso",
+   "tm": null
   },
   {
    "g": 3,
@@ -97,7 +112,8 @@
    "t": "10:00",
    "pa": null,
    "pb": null,
-   "v": "CASA"
+   "v": "CASA",
+   "tm": null
   },
   {
    "g": 4,
@@ -108,7 +124,8 @@
    "t": "11:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+   "v": "Palestra Scuola Rodari · Via Nenni, Desio",
+   "tm": null
   },
   {
    "g": 4,
@@ -119,7 +136,8 @@
    "t": "09:30",
    "pa": null,
    "pb": null,
-   "v": "Palestra · Via Superga 5, Lentate Sul Seveso"
+   "v": "Palestra · Via Superga 5, Lentate Sul Seveso",
+   "tm": null
   },
   {
    "g": 4,
@@ -130,7 +148,8 @@
    "t": "11:30",
    "pa": null,
    "pb": null,
-   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
+   "tm": null
   },
   {
    "g": 5,
@@ -141,7 +160,8 @@
    "t": "09:30",
    "pa": null,
    "pb": null,
-   "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate"
+   "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate",
+   "tm": null
   },
   {
    "g": 5,
@@ -152,7 +172,8 @@
    "t": "10:30",
    "pa": null,
    "pb": null,
-   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso",
+   "tm": null
   },
   {
    "g": 5,
@@ -163,7 +184,8 @@
    "t": "14:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
+   "tm": null
   },
   {
    "g": 6,
@@ -174,7 +196,8 @@
    "t": "14:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra Altopiano · Via Groane, 10, Seveso"
+   "v": "Palestra Altopiano · Via Groane, 10, Seveso",
+   "tm": null
   },
   {
    "g": 6,
@@ -185,7 +208,8 @@
    "t": "10:00",
    "pa": null,
    "pb": null,
-   "v": "CASA"
+   "v": "CASA",
+   "tm": null
   },
   {
    "g": 6,
@@ -196,7 +220,8 @@
    "t": "11:00",
    "pa": null,
    "pb": null,
-   "v": "Palestra Scuola Rodari · Via Nenni, Desio"
+   "v": "Palestra Scuola Rodari · Via Nenni, Desio",
+   "tm": null
   },
   {
    "g": 7,
@@ -207,7 +232,8 @@
    "t": "10:30",
    "pa": null,
    "pb": null,
-   "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate"
+   "v": "PALESTRA SCOLASTICA · Via Gianni Rodari snc, Limbiate",
+   "tm": null
   },
   {
    "g": 7,
@@ -218,7 +244,8 @@
    "t": "11:30",
    "pa": null,
    "pb": null,
-   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto"
+   "v": "Palestra · via Campaccio s.n.c., Ceriano Laghetto",
+   "tm": null
   },
   {
    "g": 7,
@@ -229,10 +256,11 @@
    "t": "11:30",
    "pa": null,
    "pb": null,
-   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno"
+   "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
+   "tm": null
   }
  ],
- "aggiornato": "21 novembre 2026, 18:48",
+ "aggiornato": "25 novembre 2026, 20:39",
  "punti": {
   "AURORA DESIO 94 BLU": 0,
   "NUOVO BASKET GROANE 2005": 0,

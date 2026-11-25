@@ -252,6 +252,12 @@ body::after {
 .res.w { display:inline-block; background:var(--win-bg); color:var(--win); border:1px solid rgba(0,230,118,.3); }
 .res.l { display:inline-block; background:var(--loss-bg); color:var(--loss); border:1px solid rgba(255,82,82,.3); }
 .res.d { display:inline-block; background:var(--line2); color:var(--muted); }
+.tempi { display:flex; align-items:center; gap:8px; margin-top:8px; }
+.tempi-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.tbar { display:flex; gap:4px; }
+.tbox { width:20px; height:20px; border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; background:var(--surface2); border:1px solid var(--line2); color:var(--muted); }
+.tbox.us { background:rgba(232,57,47,.15); border-color:rgba(232,57,47,.35); color:var(--blue-light); }
+.tbox.them { background:var(--line2); color:var(--muted); }
 .match.next { border-color: rgba(255,122,32,0.5); box-shadow: 0 0 0 1px rgba(255,122,32,0.2), inset 0 0 20px rgba(255,122,32,0.04); }
 .nextflag { font-weight:700; color:var(--orange); font-size:11.5px; display:flex; align-items:center; gap:4px; letter-spacing:.04em; text-transform:uppercase; }
 .nextflag::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--orange); box-shadow:0 0 6px var(--orange); animation:pulse-dot 1.5s infinite; }
@@ -424,7 +430,12 @@ const DOW=['dom','lun','mar','mer','gio','ven','sab'];
 const MON=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'];
 const MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
 const venue=g=>g.v==='CASA'?CASA:(g.v||'');
-const played=g=>g.pa!==null&&g.pb!==null;
+const playedPunti=g=>g.pa!==null&&g.pb!==null;
+// Nel minibasket Aquilotti non ci sono punti ufficiali: si gioca a tempi (6 periodi),
+// vince chi ne vince di più. Registriamo i tempi a mano (g.tm, 'A'/'B'/'X' dal lato
+// del campo PDF) finché la FIP non pubblica risultati reali per questa categoria.
+const tempiConta=g=>g.tm&&g.tm.length?{ta:g.tm.filter(x=>x==='A').length,tb:g.tm.filter(x=>x==='B').length,tx:g.tm.filter(x=>x==='X').length}:null;
+const played=g=>playedPunti(g)||!!tempiConta(g);
 const isBlu=g=>g.a==='LISSONE ROSSO'||g.b==='LISSONE ROSSO';
 
 function crestSVG(name){
@@ -445,23 +456,34 @@ list.innerHTML='';
 let V=0,P=0,F=0,S=0,any=false;
 function matchCard(g,opts){
   const done=played(g);
+  const tc=tempiConta(g);
+  const pa=tc?tc.ta:g.pa, pb=tc?tc.tb:g.pb;
   const dt=g.d?when(g):null;
   const home=g.a==='LISSONE ROSSO'&&true;
   const homeGame=(venue(g)===CASA);
   let badge='';
   if(opts.blu&&done){
-    const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
+    const us=g.a==='LISSONE ROSSO'?pa:pb, them=g.a==='LISSONE ROSSO'?pb:pa;
     if(us>them)badge='<span class="res w">Vinta</span>';
     else if(us<them)badge='<span class="res l">Persa</span>';
     else badge='<span class="res d">Pari</span>';
   }
-  const win=done?(g.pa>g.pb?'a':(g.pb>g.pa?'b':'')):'';
+  const win=done?(pa>pb?'a':(pb>pa?'b':'')):'';
   const row=(side,name,pt)=>`
     <div class="row">
       <div class="crest ro">${crestInner(name)}</div>
       <div class="team${name==='LISSONE ROSSO'?' us':''}">${name}</div>
-      <div class="score ro${win===side?' win':''}" aria-label="Punti ${name}">${pt===null?'':pt}</div>
+      <div class="score ro${win===side?' win':''}" aria-label="${tc?'Tempi vinti':'Punti'} ${name}">${pt===null||pt===undefined?'':pt}</div>
     </div>`;
+  let tempiHtml='';
+  if(tc){
+    const mine=g.a==='LISSONE ROSSO'?'A':'B';
+    tempiHtml=`<div class="tempi"><span class="tempi-label">Tempi (6)</span><div class="tbar">${g.tm.map(x=>{
+      const cls=x==='X'?'':(x===mine?'us':'them');
+      const label=x==='X'?'=':(x===mine?'V':'P');
+      return `<span class="tbox ${cls}">${label}</span>`;
+    }).join('')}</div></div>`;
+  }
   const dateBlock=dt
     ?`<div class="date"><span class="dow">${DOW[dt.getDay()]}</span><span class="day">${dt.getDate()}</span><span class="mon">${MON[dt.getMonth()]}</span>${g.t?`<span class="time">${g.t}</span>`:''}</div>`
     :`<div class="date dateg"><span class="dow">giornata</span><span class="day">${g.g}</span><span class="mon">andata</span></div>`;
@@ -470,7 +492,8 @@ function matchCard(g,opts){
   const v=venue(g);
   el.innerHTML=`${dateBlock}
     <div class="body">
-      ${row('a',g.a,g.pa)}${row('b',g.b,g.pb)}
+      ${row('a',g.a,pa)}${row('b',g.b,pb)}
+      ${tempiHtml}
       <div class="foot">
         ${opts.blu?`<span class="tag">${homeGame?'Casa':'Trasferta'}</span>`:''}
         ${v?`<a class="maploc" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v)}" target="_blank" rel="noopener">${v}</a>`:''}
@@ -485,7 +508,13 @@ function matchCard(g,opts){
   return el;
 }
 blu.forEach((g,i)=>{
-  if(played(g)){
+  const tc=tempiConta(g);
+  if(tc){
+    any=true;
+    const mine=g.a==='LISSONE ROSSO'?'A':'B';
+    const us=mine==='A'?tc.ta:tc.tb, them=mine==='A'?tc.tb:tc.ta;
+    if(us>them)V++; else if(us<them)P++;
+  }else if(playedPunti(g)){
     any=true;
     const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
     F+=us;S+=them; if(us>them)V++; else if(us<them)P++;
@@ -603,9 +632,13 @@ document.getElementById('pdfBtn').addEventListener('click',()=>window.print());
 function buildShareText(g){
   const opp=g.a==='LISSONE ROSSO'?g.b:g.a, casa=venue(g)===CASA, v=venue(g);
   if(played(g)){
-    const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
+    const tc=tempiConta(g);
+    const mine=g.a==='LISSONE ROSSO'?'A':'B';
+    const us=tc?(mine==='A'?tc.ta:tc.tb):(g.a==='LISSONE ROSSO'?g.pa:g.pb);
+    const them=tc?(mine==='A'?tc.tb:tc.ta):(g.a==='LISSONE ROSSO'?g.pb:g.pa);
     const esito=us>them?'Vinta':(us<them?'Persa':'Pari');
-    return `🏀 Lissone Rosso - ${opp}: ${us}-${them} (${esito})\n${location.href}`;
+    const punteggio=tc?`${us}-${them} tempi`:`${us}-${them}`;
+    return `🏀 Lissone Rosso - ${opp}: ${punteggio} (${esito})\n${location.href}`;
   }
   const dt=g.d?when(g):null;
   const dataStr=dt?`${DOW[dt.getDay()]} ${dt.getDate()} ${MON[dt.getMonth()]}`:'';
@@ -632,12 +665,14 @@ list.addEventListener('click',e=>{
 /* ---------- Classifica ---------- */
 const T={};
 ORDINE_FIP.forEach(n=>T[n]={n,g:0,v:0,p:0,pf:0,ps:0});
-GARE.filter(played).forEach(m=>{
+GARE.filter(playedPunti).forEach(m=>{
   const A=T[m.a],B=T[m.b]; if(!A||!B) return;
   A.g++;B.g++;A.pf+=m.pa;A.ps+=m.pb;B.pf+=m.pb;B.ps+=m.pa;
   if(m.pa>m.pb){A.v++;B.p++}else if(m.pb>m.pa){B.v++;A.p++}
 });
-const haPunti=Object.keys(PUNTI_FIP).length>0;
+// la FIP non pubblica punteggi per questa categoria: finché restano tutti a 0
+// mostriamo la classifica provvisoria (per vittorie), non il pillola-punti fuorviante.
+const haPunti=Object.values(PUNTI_FIP).some(v=>v>0);
 const rows=Object.values(T).map(t=>({...t,df:t.pf-t.ps,pt:PUNTI_FIP[t.n]}));
 rows.sort(haPunti
   ?(x,y)=>(y.pt??-1)-(x.pt??-1)||y.df-x.df||ORDINE_FIP.indexOf(x.n)-ORDINE_FIP.indexOf(y.n)
