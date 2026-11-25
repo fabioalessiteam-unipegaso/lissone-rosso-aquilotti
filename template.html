@@ -253,12 +253,12 @@ body::after {
 .res.w { display:inline-block; background:var(--win-bg); color:var(--win); border:1px solid rgba(0,230,118,.3); }
 .res.l { display:inline-block; background:var(--loss-bg); color:var(--loss); border:1px solid rgba(255,82,82,.3); }
 .res.d { display:inline-block; background:var(--line2); color:var(--muted); }
-.tempi { display:flex; align-items:center; gap:8px; margin-top:8px; }
-.tempi-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
-.tbar { display:flex; gap:4px; }
-.tbox { width:20px; height:20px; border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; background:var(--surface2); border:1px solid var(--line2); color:var(--muted); }
+.tempi { margin-top:8px; }
+.tempi-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; display:block; margin-bottom:5px; }
+.tptable { display:flex; flex-direction:column; gap:4px; }
+.tprow { display:flex; gap:4px; }
+.tbox { width:26px; height:22px; border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; background:var(--surface2); border:1px solid var(--line2); color:var(--muted); }
 .tbox.us { background:rgba(232,57,47,.15); border-color:rgba(232,57,47,.35); color:var(--blue-light); }
-.tbox.them { background:var(--line2); color:var(--muted); }
 .match.next { border-color: rgba(255,122,32,0.5); box-shadow: 0 0 0 1px rgba(255,122,32,0.2), inset 0 0 20px rgba(255,122,32,0.04); }
 .nextflag { font-weight:700; color:var(--orange); font-size:11.5px; display:flex; align-items:center; gap:4px; letter-spacing:.04em; text-transform:uppercase; }
 .nextflag::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--orange); box-shadow:0 0 6px var(--orange); animation:pulse-dot 1.5s infinite; }
@@ -433,19 +433,21 @@ const MON=['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','di
 const MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
 const venue=g=>g.v==='CASA'?CASA:(g.v||'');
 const playedPunti=g=>g.pa!==null&&g.pb!==null;
-// Nel minibasket Aquilotti non ci sono punti ufficiali: si gioca a tempi (6 periodi),
-// vince chi ne vince di più. Registriamo i tempi a mano (g.tm, 'A'/'B'/'X' dal lato
-// del campo PDF) finché la FIP non pubblica risultati reali per questa categoria.
-const tempiConta=g=>g.tm&&g.tm.length?{ta:g.tm.filter(x=>x==='A').length,tb:g.tm.filter(x=>x==='B').length,tx:g.tm.filter(x=>x==='X').length}:null;
-// Regola ufficiale minibasket (stampata sul referto FIP 4c4): ogni tempo vale 3 punti
-// a chi lo vince, 1 a chi lo perde, 2 e 2 in caso di parità; il punteggio finale è la somma.
-const puntiUfficiali=g=>{
-  if(!g.tm||!g.tm.length)return null;
-  let pa=0,pb=0;
-  g.tm.forEach(x=>{ if(x==='A'){pa+=3;pb+=1} else if(x==='B'){pa+=1;pb+=3} else {pa+=2;pb+=2} });
-  return {pa,pb};
+// Nel minibasket Aquilotti la FIP non pubblica punteggi: si gioca a tempi (6 periodi),
+// e registriamo a mano dal referto cartaceo i canestri reali segnati in ciascuno
+// (g.tp, lista di coppie [puntiA,puntiB]) finché la FIP non pubblica dati reali.
+// Dalla regola ufficiale stampata sul referto FIP 4c4 (3 punti a chi vince il tempo,
+// 1 a chi perde, 2 e 2 in parità) deriviamo anche il punteggio ufficiale di partita.
+const tpInfo=g=>{
+  if(!g.tp||!g.tp.length)return null;
+  let pa=0,pb=0,ra=0,rb=0;
+  g.tp.forEach(([a,b])=>{
+    ra+=a;rb+=b;
+    if(a>b){pa+=3;pb+=1}else if(b>a){pa+=1;pb+=3}else{pa+=2;pb+=2}
+  });
+  return {pa,pb,ra,rb};
 };
-const played=g=>playedPunti(g)||!!tempiConta(g);
+const played=g=>playedPunti(g)||!!tpInfo(g);
 const isBlu=g=>g.a==='LISSONE ROSSO'||g.b==='LISSONE ROSSO';
 
 function crestSVG(name){
@@ -466,9 +468,8 @@ list.innerHTML='';
 let V=0,P=0,F=0,S=0,any=false;
 function matchCard(g,opts){
   const done=played(g);
-  const tc=tempiConta(g);
-  const pu=puntiUfficiali(g);
-  const pa=pu?pu.pa:g.pa, pb=pu?pu.pb:g.pb;
+  const tp=tpInfo(g);
+  const pa=tp?tp.pa:g.pa, pb=tp?tp.pb:g.pb;
   const dt=g.d?when(g):null;
   const home=g.a==='LISSONE ROSSO'&&true;
   const homeGame=(venue(g)===CASA);
@@ -484,16 +485,18 @@ function matchCard(g,opts){
     <div class="row">
       <div class="crest ro">${crestInner(name)}</div>
       <div class="team${name==='LISSONE ROSSO'?' us':''}">${name}</div>
-      <div class="score ro${win===side?' win':''}" aria-label="${pu?'Punteggio ufficiale (regola 3-2-1 a tempo)':'Punti'} ${name}">${pt===null||pt===undefined?'':pt}</div>
+      <div class="score ro${win===side?' win':''}" aria-label="${tp?'Punteggio ufficiale (regola 3-2-1 a tempo)':'Punti'} ${name}">${pt===null||pt===undefined?'':pt}</div>
     </div>`;
   let tempiHtml='';
-  if(tc){
-    const mine=g.a==='LISSONE ROSSO'?'A':'B';
-    tempiHtml=`<div class="tempi"><span class="tempi-label">Tempi (6)</span><div class="tbar">${g.tm.map(x=>{
-      const cls=x==='X'?'':(x===mine?'us':'them');
-      const label=x==='X'?'=':(x===mine?'V':'P');
-      return `<span class="tbox ${cls}">${label}</span>`;
-    }).join('')}</div></div>`;
+  if(tp){
+    const mine=g.a==='LISSONE ROSSO'?0:1;
+    const cellRow=idx=>g.tp.map(p=>{
+      const mv=p[idx], ov=p[1-idx];
+      const winCls=(mv>ov&&idx===mine)?' us':'';
+      return `<span class="tbox${winCls}">${mv}</span>`;
+    }).join('');
+    tempiHtml=`<div class="tempi"><span class="tempi-label">Tempi (6) · canestri reali</span>
+      <div class="tptable"><div class="tprow">${cellRow(0)}</div><div class="tprow">${cellRow(1)}</div></div></div>`;
   }
   const dateBlock=dt
     ?`<div class="date"><span class="dow">${DOW[dt.getDay()]}</span><span class="day">${dt.getDate()}</span><span class="mon">${MON[dt.getMonth()]}</span>${g.t?`<span class="time">${g.t}</span>`:''}</div>`
@@ -519,12 +522,13 @@ function matchCard(g,opts){
   return el;
 }
 blu.forEach((g,i)=>{
-  const tc=tempiConta(g);
-  if(tc){
+  const tp=tpInfo(g);
+  if(tp){
     any=true;
-    const mine=g.a==='LISSONE ROSSO'?'A':'B';
-    const us=mine==='A'?tc.ta:tc.tb, them=mine==='A'?tc.tb:tc.ta;
-    if(us>them)V++; else if(us<them)P++;
+    const mine=g.a==='LISSONE ROSSO'?0:1;
+    const us=mine===0?tp.pa:tp.pb, them=mine===0?tp.pb:tp.pa;
+    const usR=mine===0?tp.ra:tp.rb, themR=mine===0?tp.rb:tp.ra;
+    F+=usR;S+=themR; if(us>them)V++; else if(us<them)P++;
   }else if(playedPunti(g)){
     any=true;
     const us=g.a==='LISSONE ROSSO'?g.pa:g.pb, them=g.a==='LISSONE ROSSO'?g.pb:g.pa;
@@ -643,13 +647,12 @@ document.getElementById('pdfBtn').addEventListener('click',()=>window.print());
 function buildShareText(g){
   const opp=g.a==='LISSONE ROSSO'?g.b:g.a, casa=venue(g)===CASA, v=venue(g);
   if(played(g)){
-    const tc=tempiConta(g);
-    const mine=g.a==='LISSONE ROSSO'?'A':'B';
-    const us=tc?(mine==='A'?tc.ta:tc.tb):(g.a==='LISSONE ROSSO'?g.pa:g.pb);
-    const them=tc?(mine==='A'?tc.tb:tc.ta):(g.a==='LISSONE ROSSO'?g.pb:g.pa);
+    const tp=tpInfo(g);
+    const mine=g.a==='LISSONE ROSSO'?0:1;
+    const us=tp?(mine===0?tp.pa:tp.pb):(g.a==='LISSONE ROSSO'?g.pa:g.pb);
+    const them=tp?(mine===0?tp.pb:tp.pa):(g.a==='LISSONE ROSSO'?g.pb:g.pa);
     const esito=us>them?'Vinta':(us<them?'Persa':'Pari');
-    const punteggio=tc?`${us}-${them} tempi`:`${us}-${them}`;
-    return `🏀 Lissone Rosso - ${opp}: ${punteggio} (${esito})\n${location.href}`;
+    return `🏀 Lissone Rosso - ${opp}: ${us}-${them} (${esito})\n${location.href}`;
   }
   const dt=g.d?when(g):null;
   const dataStr=dt?`${DOW[dt.getDay()]} ${dt.getDate()} ${MON[dt.getMonth()]}`:'';
