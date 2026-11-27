@@ -129,7 +129,7 @@
    "a": "BASKET CESANO SEVESO BIANCO",
    "b": "AURORA DESIO 94 BLU",
    "d": "2026-11-28",
-   "t": "17:00",
+   "t": "12:00",
    "pa": null,
    "pb": null,
    "v": "Palestra Altopiano · Via Groane, 10, Seveso",
@@ -176,8 +176,8 @@
    "pb": null,
    "v": "Palazzetto Don Ghezzi · Via Manzoni 23, Cesano Maderno",
    "tp": null,
-   "d_ov": "2026-12-12",
-   "t_ov": "14:30"
+   "d_ov": null,
+   "t_ov": null
   },
   {
    "g": 4,
@@ -320,7 +320,7 @@
    "t_ov": null
   }
  ],
- "aggiornato": "25 novembre 2026, 21:43",
+ "aggiornato": "27 novembre 2026, 20:41",
  "punti": {
   "AURORA DESIO 94 BLU": 0,
   "NUOVO BASKET GROANE 2005": 0,
